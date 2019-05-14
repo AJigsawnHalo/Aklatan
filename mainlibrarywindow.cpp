@@ -2,6 +2,8 @@
 #include "ui_mainlibrarywindow.h"
 #include "dbmanager.h"
 #include "loginform.h"
+#include "globals.h"
+
 
 MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -79,6 +81,11 @@ void MainLibraryWindow::loadReturnPage(){
     query.exec();
     model->setQuery(query);
     ui->tableReturn->setModel(model);
+
+    //initialize the penalties
+    ui->checkBox->setChecked(false);
+    ui->lineLatePenalty->setText("0");
+    ui->lineDamagePenalty->setText("0");
 }
 
 
@@ -142,4 +149,17 @@ void MainLibraryWindow::on_actionExit_triggered()
 void MainLibraryWindow::on_pushButton_clicked()
 {
     QApplication::quit();
+}
+
+void MainLibraryWindow::on_checkBox_toggled(bool checked)
+{
+
+
+    penalty.setNum(damagePenalty);
+    if (checked == true){
+        ui->lineDamagePenalty->setText(penalty);
+    }
+    else{
+        ui->lineDamagePenalty->setText("0");
+    }
 }

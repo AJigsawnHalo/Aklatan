@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     dbmanager.cpp \
+    globals.cpp \
     main.cpp \
     loginform.cpp \
     mainlibrarywindow.cpp
 
 HEADERS += \
     dbmanager.h \
+    globals.h \
     loginform.h \
     mainlibrarywindow.h
 

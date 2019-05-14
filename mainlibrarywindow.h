@@ -16,6 +16,7 @@ public:
     explicit MainLibraryWindow(QWidget *parent = nullptr);
     ~MainLibraryWindow();
 
+
 private slots:
     void on_lineBookID_textChanged(const QString &arg1);
     void on_lineBookID2_textChanged(const QString &arg1);
@@ -26,6 +27,10 @@ private slots:
     void on_actionExit_triggered();
 
     void on_pushButton_clicked();
+
+    //void on_bookDamagedButton_clicked(bool checked);
+
+    void on_checkBox_toggled(bool checked);
 
 private:
     Ui::MainLibraryWindow *ui;

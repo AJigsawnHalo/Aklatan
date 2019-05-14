@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout_11">
@@ -695,31 +695,17 @@
           <item row="9" column="1" colspan="3">
            <widget class="QTableView" name="tableReturn"/>
           </item>
+          <item row="6" column="2">
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>Book Damaged</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item row="3" column="0">
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="returnHomeButton">
-            <property name="text">
-             <string>Home</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="4">
-           <widget class="QPushButton" name="pushButton_3">
-            <property name="text">
-             <string>Return Book</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QPushButton" name="refreshButton_2">
-            <property name="text">
-             <string>Clear</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="1">
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
@@ -733,10 +719,24 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="2">
-           <widget class="QPushButton" name="bookDamagedButton">
+          <item row="0" column="3">
+           <widget class="QPushButton" name="pushButton_3">
             <property name="text">
-             <string>Book Damaged</string>
+             <string>Return Book</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="refreshButton_2">
+            <property name="text">
+             <string>Clear</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="returnHomeButton">
+            <property name="text">
+             <string>Home</string>
             </property>
            </widget>
           </item>

@@ -1,5 +1,5 @@
 #include "dbmanager.h"
-
+#include "globals.h"
 dbManager::dbManager(QWidget *parent) : QMainWindow(parent)
 {
 
@@ -8,7 +8,7 @@ dbManager::dbManager(QWidget *parent) : QMainWindow(parent)
 bool dbManager::connOpen(){
 
     //initialize the Database
-    QString dbName = "aklatan.db";
+
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbLocation = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation); //Set default database location
     dbLocation = dbLocation + "/" + dbName;
