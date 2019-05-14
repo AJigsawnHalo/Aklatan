@@ -31,9 +31,16 @@ private slots:
 
     void on_actionReturn_Book_triggered();
 
+    void on_lineBookID_textChanged(const QString &arg1);
+
+    void on_lineBookID2_textChanged(const QString &arg1);
+
+    void on_refreshButton_2_clicked();
+
+    void on_refreshButton_clicked();
+
 private:
     Ui::MainLibraryWindow *ui;
-    dbManager db;
 };
 
 #endif // MAINLIBRARYWINDOW_H

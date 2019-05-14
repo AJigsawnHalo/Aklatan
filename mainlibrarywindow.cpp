@@ -22,6 +22,13 @@ MainLibraryWindow::~MainLibraryWindow()
 void MainLibraryWindow::on_homeIssueButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->lineBookID->setText("");
+    ui->lineBookName->setText("");
+    ui->lineAuthor->setText("");
+    ui->lineCategory->setText("");
+    ui->linePublisher->setText("");
+    ui->lineEdition->setText("");
+    ui->linePubYear->setText("");
 }
 
 void MainLibraryWindow::on_issueHomeButton_clicked()
@@ -32,6 +39,13 @@ void MainLibraryWindow::on_issueHomeButton_clicked()
 void MainLibraryWindow::on_actionIssue_Book_triggered()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->lineBookID->setText("");
+    ui->lineBookName->setText("");
+    ui->lineAuthor->setText("");
+    ui->lineCategory->setText("");
+    ui->linePublisher->setText("");
+    ui->lineEdition->setText("");
+    ui->linePubYear->setText("");
 }
 
 /*void MainLibraryWindow::on_actionAdd_Book_triggered()
@@ -48,9 +62,92 @@ void MainLibraryWindow::on_returnHomeButton_clicked()
 void MainLibraryWindow::on_homeReturnButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->lineBookID2->setText("");
+    ui->lineBookName2->setText("");
+    ui->lineAuthor2->setText("");
+    ui->lineCategory2->setText("");
+    ui->linePublisher2->setText("");
+    ui->lineEdition2->setText("");
+    ui->linePubYear2->setText("");
 }
 
 void MainLibraryWindow::on_actionReturn_Book_triggered()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->lineBookID2->setText("");
+    ui->lineBookName2->setText("");
+    ui->lineAuthor2->setText("");
+    ui->lineCategory2->setText("");
+    ui->linePublisher2->setText("");
+    ui->lineEdition2->setText("");
+    ui->linePubYear2->setText("");
+}
+
+void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1)
+{
+    dbManager db;
+    QString bookID = arg1;
+    QSqlQuery query; //initialize the query
+    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    if (query.exec()){
+        while (query.next()){
+            ui->lineBookName->setText(query.value(1).toString());
+            ui->lineAuthor->setText(query.value(3).toString());
+            ui->lineCategory->setText(query.value(2).toString());
+            ui->linePublisher->setText(query.value(4).toString());
+            ui->lineEdition->setText(query.value(5).toString());
+            ui->linePubYear->setText(query.value(6).toString());
+
+        }
+
+    }
+    else{
+        qDebug() << "Database Failed";
+    }
+
+}
+
+void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1)
+{
+    dbManager db;
+    QString bookID = arg1;
+    QSqlQuery query; //initialize the query
+    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    if (query.exec()){
+        while (query.next()){
+            ui->lineBookName2->setText(query.value(1).toString());
+            ui->lineAuthor2->setText(query.value(3).toString());
+            ui->lineCategory2->setText(query.value(2).toString());
+            ui->linePublisher2->setText(query.value(4).toString());
+            ui->lineEdition2->setText(query.value(5).toString());
+            ui->linePubYear2->setText(query.value(6).toString());
+
+        }
+
+    }
+    else{
+        qDebug() << "Database Failed";
+    }
+}
+
+void MainLibraryWindow::on_refreshButton_2_clicked()
+{
+    ui->lineBookID2->setText("");
+    ui->lineBookName2->setText("");
+    ui->lineAuthor2->setText("");
+    ui->lineCategory2->setText("");
+    ui->linePublisher2->setText("");
+    ui->lineEdition2->setText("");
+    ui->linePubYear2->setText("");
+}
+
+void MainLibraryWindow::on_refreshButton_clicked()
+{
+    ui->lineBookID->setText("");
+    ui->lineBookName->setText("");
+    ui->lineAuthor->setText("");
+    ui->lineCategory->setText("");
+    ui->linePublisher->setText("");
+    ui->lineEdition->setText("");
+    ui->linePubYear->setText("");
 }
