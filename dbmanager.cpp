@@ -12,7 +12,7 @@ bool dbManager::connOpen(){
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbLocation = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation); //Set default database location
     dbLocation = dbLocation + "/" + dbName;
-    db.setDatabaseName(dbLocation);
+    db.setDatabaseName(dbLocation); //sets the database name using the database location
     qDebug() << "Database location: " + dbLocation;
 
     //Check for database connection

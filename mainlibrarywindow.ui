@@ -21,8 +21,8 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="page">
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="1">
+       <layout class="QGridLayout" name="gridLayout_11">
+        <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -55,7 +55,7 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item row="1" column="0">
          <widget class="Line" name="line">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -68,23 +68,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="1">
+        <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="2" column="2">
            <widget class="QPushButton" name="homeIssueButton">
@@ -216,10 +200,72 @@
           </item>
          </layout>
         </item>
+        <item row="3" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Exit Aklatan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_2">
        <layout class="QGridLayout" name="gridLayout_8">
+        <item row="3" column="0">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="issueHomeButton">
+            <property name="text">
+             <string>Home</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="text">
+             <string>Issue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="refreshButton">
+            <property name="text">
+             <string>Clear</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_2">
           <property name="sizePolicy">
@@ -268,97 +314,28 @@
         </item>
         <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="1" column="0">
-           <widget class="QLabel" name="labelCategory">
-            <property name="text">
-             <string>Category:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="linePublisher"/>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLineEdit" name="lineUserID"/>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="linePubYear"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="labelPubYear">
-            <property name="text">
-             <string>Publishing Year:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="lineAuthor"/>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="labelUserID">
-            <property name="text">
-             <string>Borrower ID</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineBookName"/>
-          </item>
-          <item row="1" column="3">
-           <widget class="QLineEdit" name="lineUserName"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="labelBookAuthor">
-            <property name="text">
-             <string>Author:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="lineCategory"/>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="labelBookName">
-            <property name="text">
-             <string>Book Name:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="labelUserName">
-            <property name="text">
-             <string>Borrower Name</string>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="3">
-           <widget class="QLineEdit" name="lineUserType"/>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdition"/>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="labelEdition">
-            <property name="text">
-             <string>Edition:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
            <widget class="QLabel" name="labelUserType">
             <property name="text">
              <string>Borrower Type</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="labelPublisher">
+          <item row="5" column="0">
+           <widget class="QLabel" name="labelEdition">
             <property name="text">
-             <string>Publisher:</string>
+             <string>Edition:</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="1" column="3">
+           <widget class="QLabel" name="labelUserName">
+            <property name="text">
+             <string>Borrower Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
            <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -371,43 +348,111 @@
             </property>
            </spacer>
           </item>
-         </layout>
-        </item>
-        <item row="3" column="0">
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="issueHomeButton">
+          <item row="0" column="3">
+           <widget class="QLabel" name="labelUserID">
             <property name="text">
-             <string>Home</string>
+             <string>Borrower ID</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <widget class="QPushButton" name="pushButton_4">
+          <item row="1" column="4">
+           <widget class="QLineEdit" name="lineUserName"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="labelPubYear">
             <property name="text">
-             <string>Issue</string>
+             <string>Publishing Year:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QLineEdit" name="lineUserType"/>
+          </item>
+          <item row="0" column="4">
+           <widget class="QLineEdit" name="lineUserID"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelPublisher">
+            <property name="text">
+             <string>Publisher:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelBookAuthor">
+            <property name="text">
+             <string>Author:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelCategory">
+            <property name="text">
+             <string>Category:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelBookName">
+            <property name="text">
+             <string>Book Name:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLineEdit" name="lineEdition">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="linePublisher">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="lineAuthor">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="lineCategory">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="lineBookName">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLineEdit" name="linePubYear">
+            <property name="enabled">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QPushButton" name="pushButton_5">
+           <widget class="QLineEdit" name="lineBookID"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelBookID">
             <property name="text">
-             <string>Refresh</string>
+             <string>Book ID</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+          <item row="7" column="2" colspan="3">
+           <widget class="QTableView" name="tableIssue"/>
           </item>
          </layout>
         </item>
@@ -463,10 +508,13 @@
         </item>
         <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="labelBookName2">
-            <property name="text">
-             <string>Book Name:</string>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="linePubYear2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
            </widget>
           </item>
@@ -477,27 +525,109 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineBookName2"/>
+          <item row="4" column="3">
+           <widget class="QLineEdit" name="lineLatePenalty">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="label_UserType2">
+            <property name="text">
+             <string>Borrower Type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_UserName2">
+            <property name="text">
+             <string>Borrower Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="3">
+           <widget class="QLineEdit" name="lineDamagePenalty">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="labelDamagePenalty">
+            <property name="text">
+             <string>Damage Penalty</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineBookName2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="linePublisher2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="lineAuthor2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="lineEdition2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineCategory2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLineEdit" name="lineUserName2"/>
           </item>
           <item row="0" column="3">
            <widget class="QLineEdit" name="lineUserID2"/>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_Category2">
-            <property name="text">
-             <string>Category:</string>
+          <item row="2" column="3">
+           <widget class="QLineEdit" name="lineUserType2">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="labelAuthor2">
+          <item row="4" column="2">
+           <widget class="QLabel" name="labelLatePenalty">
             <property name="text">
-             <string>Author:</string>
+             <string>Late Penalty</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="9" column="0">
            <spacer name="verticalSpacer_4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -510,61 +640,60 @@
             </property>
            </spacer>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="labelPublisher2">
-            <property name="text">
-             <string>Publisher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="labelEdition2">
-            <property name="text">
-             <string>Edition:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
+          <item row="6" column="0">
            <widget class="QLabel" name="labelPubYear2">
             <property name="text">
              <string>Publishing Year:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_UserName2">
+          <item row="5" column="0">
+           <widget class="QLabel" name="labelEdition2">
             <property name="text">
-             <string>Borrower Name</string>
+             <string>Edition:</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="label_UserType2">
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelPublisher2">
             <property name="text">
-             <string>Borrower Type</string>
+             <string>Publisher:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="lineCategory2"/>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelAuthor2">
+            <property name="text">
+             <string>Author:</string>
+            </property>
+           </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="lineAuthor2"/>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_Category2">
+            <property name="text">
+             <string>Category:</string>
+            </property>
+           </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="linePublisher2"/>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelBookName2">
+            <property name="text">
+             <string>Book Name:</string>
+            </property>
+           </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdition2"/>
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelBookID2">
+            <property name="text">
+             <string>Book ID:</string>
+            </property>
+           </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="linePubYear2"/>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineBookID2"/>
           </item>
-          <item row="1" column="3">
-           <widget class="QLineEdit" name="lineUserName2"/>
-          </item>
-          <item row="2" column="3">
-           <widget class="QLineEdit" name="lineUserType2"/>
+          <item row="9" column="1" colspan="3">
+           <widget class="QTableView" name="tableReturn"/>
           </item>
          </layout>
         </item>
@@ -574,6 +703,20 @@
            <widget class="QPushButton" name="returnHomeButton">
             <property name="text">
              <string>Home</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="text">
+             <string>Return Book</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QPushButton" name="refreshButton_2">
+            <property name="text">
+             <string>Clear</string>
             </property>
            </widget>
           </item>
@@ -591,16 +734,9 @@
            </spacer>
           </item>
           <item row="0" column="2">
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="bookDamagedButton">
             <property name="text">
-             <string>Refresh</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QPushButton" name="pushButton_3">
-            <property name="text">
-             <string>Return Book</string>
+             <string>Book Damaged</string>
             </property>
            </widget>
           </item>
@@ -625,9 +761,12 @@
     <property name="title">
      <string>Library</string>
     </property>
+    <addaction name="actionLibrary_Home"/>
     <addaction name="actionIssue_Book"/>
     <addaction name="actionReturn_Book"/>
     <addaction name="actionBook_Report"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuAttendance">
     <property name="title">
@@ -682,6 +821,16 @@
   <action name="actionBook_Report">
    <property name="text">
     <string>Book Report...</string>
+   </property>
+  </action>
+  <action name="actionLibrary_Home">
+   <property name="text">
+    <string>Library Home</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string> Exit Aklatan</string>
    </property>
   </action>
  </widget>
