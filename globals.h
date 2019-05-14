@@ -11,6 +11,9 @@ extern QString dbName;
 extern float damagePenalty;
 extern float latePenalty;
 extern QString penalty;
+extern QDate today;
+extern QDate dueDate;
+extern int daysDue;
 
 
 

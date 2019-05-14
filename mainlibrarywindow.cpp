@@ -58,6 +58,10 @@ void MainLibraryWindow::loadIssuePage(){
     query.exec();
     model->setQuery(query);
     ui->tableIssue->setModel(model);
+
+    //initialize the date
+    ui->dateIssued->setDate(today);
+    ui->dateDue->setDate(dueDate);
 }
 
 //Loading the Return Books Page
@@ -86,6 +90,9 @@ void MainLibraryWindow::loadReturnPage(){
     ui->checkBox->setChecked(false);
     ui->lineLatePenalty->setText("0");
     ui->lineDamagePenalty->setText("0");
+
+    //Temporary date initialization. Will be fixed when an issue and retrun function has been built.
+    ui->dateReturn->setDate(dueDate);
 }
 
 
@@ -153,8 +160,7 @@ void MainLibraryWindow::on_pushButton_clicked()
 
 void MainLibraryWindow::on_checkBox_toggled(bool checked)
 {
-
-
+    //retrieves the Damage Penalty value and shows it on the Returns page if applicable
     penalty.setNum(damagePenalty);
     if (checked == true){
         ui->lineDamagePenalty->setText(penalty);
