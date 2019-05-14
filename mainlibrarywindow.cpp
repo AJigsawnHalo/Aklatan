@@ -3,7 +3,6 @@
 #include "dbmanager.h"
 #include "loginform.h"
 
-
 MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainLibraryWindow)
@@ -11,7 +10,6 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Aklatan");
     ui->stackedWidget->setCurrentIndex(0); //set stacked widget to home page
-    dbManager db;
 
 }
 

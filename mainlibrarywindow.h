@@ -2,7 +2,8 @@
 #define MAINLIBRARYWINDOW_H
 
 #include <QMainWindow>
-
+#include <QtSql>
+#include "dbmanager.h"
 namespace Ui {
 class MainLibraryWindow;
 }
@@ -32,6 +33,7 @@ private slots:
 
 private:
     Ui::MainLibraryWindow *ui;
+    dbManager db;
 };
 
 #endif // MAINLIBRARYWINDOW_H

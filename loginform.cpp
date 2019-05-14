@@ -1,5 +1,6 @@
 #include "loginform.h"
 #include "ui_loginform.h"
+#include "dbmanager.h"
 
 LoginForm::LoginForm(QWidget *parent)
     : QDialog(parent)
@@ -7,7 +8,7 @@ LoginForm::LoginForm(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Aklatan - Login");
-<<<<<<< HEAD
+
     //Check for database connection
     dbManager db;
     if (!db.connOpen() == true){
@@ -17,8 +18,7 @@ LoginForm::LoginForm(QWidget *parent)
     else{
         ui->labelStatus->setText("Database Connected.");
     }
-=======
->>>>>>> a80d92dfeaf8e96c2354d2f665325e2a68125ac0
+
 }
 
 LoginForm::~LoginForm()
@@ -29,14 +29,15 @@ LoginForm::~LoginForm()
 
 void LoginForm::on_pushButton_clicked()
 {
-<<<<<<< HEAD
-    dbManager db;
+
+
     //get the username and password in the line edit fields
     QString username,password;
     username = ui->line_Username->text();
     password = ui->line_Password->text();
 
     //Check for database connection again.
+    dbManager db;
     if(!db.connOpen()) {
         qDebug() << "Failed to open the database";
         return;
@@ -68,9 +69,9 @@ void LoginForm::on_pushButton_clicked()
             ui->labelStatus->setText("Incorrect Username and Password");
         }
     }
-=======
+
     lib.show();
     this->close();
 
->>>>>>> a80d92dfeaf8e96c2354d2f665325e2a68125ac0
+
 }

@@ -31,4 +31,3 @@ void dbManager::connClose(){
     db.close();
     db.removeDatabase(QSqlDatabase::defaultConnection);
 }
-
