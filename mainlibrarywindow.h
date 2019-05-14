@@ -17,27 +17,15 @@ public:
     ~MainLibraryWindow();
 
 private slots:
-    void on_homeIssueButton_clicked();
-
-    void on_issueHomeButton_clicked();
-
-    void on_actionIssue_Book_triggered();
-
-    //void on_actionAdd_Book_triggered();
-
-    void on_returnHomeButton_clicked();
-
-    void on_homeReturnButton_clicked();
-
-    void on_actionReturn_Book_triggered();
-
     void on_lineBookID_textChanged(const QString &arg1);
-
     void on_lineBookID2_textChanged(const QString &arg1);
+    void loadIssuePage();
+    void loadReturnPage();
+    void loadHomePage();
 
-    void on_refreshButton_2_clicked();
+    void on_actionExit_triggered();
 
-    void on_refreshButton_clicked();
+    void on_pushButton_clicked();
 
 private:
     Ui::MainLibraryWindow *ui;

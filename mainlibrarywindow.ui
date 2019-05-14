@@ -18,11 +18,11 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="1">
+       <layout class="QGridLayout" name="gridLayout_11">
+        <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -55,7 +55,7 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item row="1" column="0">
          <widget class="Line" name="line">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -68,23 +68,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="1">
+        <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="2" column="2">
            <widget class="QPushButton" name="homeIssueButton">
@@ -209,6 +193,30 @@
             <property name="sizeHint" stdset="0">
              <size>
               <width>700</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Exit Aklatan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
@@ -442,6 +450,9 @@
              <string>Book ID</string>
             </property>
            </widget>
+          </item>
+          <item row="7" column="2" colspan="3">
+           <widget class="QTableView" name="tableIssue"/>
           </item>
          </layout>
         </item>
@@ -681,6 +692,9 @@
           <item row="0" column="1">
            <widget class="QLineEdit" name="lineBookID2"/>
           </item>
+          <item row="9" column="1" colspan="3">
+           <widget class="QTableView" name="tableReturn"/>
+          </item>
          </layout>
         </item>
         <item row="3" column="0">
@@ -747,9 +761,12 @@
     <property name="title">
      <string>Library</string>
     </property>
+    <addaction name="actionLibrary_Home"/>
     <addaction name="actionIssue_Book"/>
     <addaction name="actionReturn_Book"/>
     <addaction name="actionBook_Report"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuAttendance">
     <property name="title">
@@ -804,6 +821,16 @@
   <action name="actionBook_Report">
    <property name="text">
     <string>Book Report...</string>
+   </property>
+  </action>
+  <action name="actionLibrary_Home">
+   <property name="text">
+    <string>Library Home</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string> Exit Aklatan</string>
    </property>
   </action>
  </widget>
