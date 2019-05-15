@@ -33,3 +33,4 @@ If you would like to contribute, please go to the [Github Page.](https://github.
 ## Related Links
 *	[GitHub Repo](https://github.com/AJigsawnHalo/aklatan "Aklatan GitHub repo")
 *	[GitLab Repo.](https://gitlab.com/AJigsawnHalo/aklatan "Aklatan Gitlab repo") (for redundancy)
+*  [Project Page](https://ajigsawnhalo.github.io/Aklatan)
