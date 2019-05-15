@@ -15,5 +15,12 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 *   Make it easier to setup for multiple computers.
 
 ## Things I'm working on.
-*   Better login system.
 *   Main Library window.
+    * Issue, Return, Book Report, and Add User/Book Pages
+    * Late Penalty and Damage Penalty Calculation
+
+## Things to be done in the future
+*   User-facing Windows
+    * Login Window
+    * Search Window
+*   Original LMS hardware support
