@@ -17,6 +17,7 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     connect(ui->issueHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
     connect(ui->returnHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
     connect(ui->actionLibrary_Home, SIGNAL(triggered()), this, SLOT(loadHomePage()));
+    connect(ui->reportHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
 
     //connections for the Issue Page
     connect(ui->homeIssueButton, SIGNAL(pressed()), this, SLOT(loadIssuePage()));
@@ -27,6 +28,11 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     connect(ui->homeReturnButton, SIGNAL(pressed()), this, SLOT(loadReturnPage()));
     connect(ui->refreshButton_2, SIGNAL(pressed()), this, SLOT(loadReturnPage()));
     connect(ui->actionReturn_Book, SIGNAL(triggered()), this, SLOT(loadReturnPage()));
+
+    //connections for the Book Report Page
+    connect(ui->homeReportButton, SIGNAL(pressed()), this, SLOT(passReportLoadAll()));
+    connect(ui->actionAll_Books, SIGNAL(triggered()), this, SLOT(passReportLoadAll()));
+    connect(ui->actionIssued_Books, SIGNAL(triggered()), this, SLOT(passReportLoadIss()));
 }
 
 MainLibraryWindow::~MainLibraryWindow()
@@ -95,10 +101,53 @@ void MainLibraryWindow::loadReturnPage(){
     ui->dateReturn->setDate(dueDate);
 }
 
+void MainLibraryWindow::passReportLoadAll()
+{
+    MainLibraryWindow::loadReportPage(0);
+}
+
+void MainLibraryWindow::passReportLoadIss()
+{
+    MainLibraryWindow::loadReportPage(1);
+}
+
+void MainLibraryWindow::loadReportPage(const int &arg)
+{
+    ui->stackedWidget->setCurrentIndex(3);
+    //load appropriate tab
+    ui->tabWidReport->setCurrentIndex(arg);
+
+    //setup Queries
+    QSqlQuery query,iss;
+    QSqlQueryModel * model= new QSqlQueryModel();
+    QSqlQueryModel * modiss= new QSqlQueryModel();
+
+    query.prepare("SELECT * FROM BOOKS");
+    iss.prepare("SELECT * FROM issued");
+
+    //exec query for all books
+    query.exec();
+    model->setQuery(query);
+
+    ui->tableAll->setModel(model);
+    ui->tableAll->repaint();
+
+    //exec query for issued books
+    iss.exec();
+    modiss->setQuery(iss);
+
+    ui->tableIssued->setModel(modiss);
+    ui->tableIssued->repaint();
+
+    //set specific column widths
+    ui->tableAll->setColumnWidth(1, 200);
+    ui->tableIssued->setColumnWidth(1, 200);
+
+
+}
 
 void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries the database for the book using the book ID
 {
-    dbManager db;
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -124,7 +173,7 @@ void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries
 
 void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Queries the database for the book using the book ID
 {
-    dbManager db;
+
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -168,4 +217,14 @@ void MainLibraryWindow::on_checkBox_toggled(bool checked)
     else{
         ui->lineDamagePenalty->setText("0");
     }
+}
+
+void MainLibraryWindow::on_refreshButton_2_clicked()
+{
+    ui->statusbar->showMessage("Cleared", 3000);
+}
+
+void MainLibraryWindow::on_refreshButton_clicked()
+{
+    ui->statusbar->showMessage("Cleared", 3000);
 }

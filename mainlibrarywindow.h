@@ -23,14 +23,16 @@ private slots:
     void loadIssuePage();
     void loadReturnPage();
     void loadHomePage();
-
+    void loadReportPage(const int &arg);
+    void passReportLoadAll();
+    void passReportLoadIss();
     void on_actionExit_triggered();
-
     void on_pushButton_clicked();
-
-    //void on_bookDamagedButton_clicked(bool checked);
-
     void on_checkBox_toggled(bool checked);
+
+    void on_refreshButton_2_clicked();
+
+    void on_refreshButton_clicked();
 
 private:
     Ui::MainLibraryWindow *ui;
