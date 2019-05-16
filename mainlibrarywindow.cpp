@@ -219,6 +219,7 @@ void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Querie
         while (iss.next()){
         QString dueString = iss.value("DateDue").toString();
         due = QDate::fromString(dueString, "MM/dd/yyyy");
+        //check if the book is returned late
         qint64 dateDiff = due.daysTo(today);
         if (dateDiff > 0){
             ui->lineLatePenalty->setText(lpenalty.setNum(latePenalty));
@@ -253,10 +254,10 @@ void MainLibraryWindow::on_lineUserID2_textChanged(const QString &arg1)
             ui->lineUserName2->setText(query.value(3).toString());
             ui->lineUserType2->setText(query.value(4).toString());
             iss.exec("SELECT * FROM issued WHERE UserID='"+ID+"' and BookID='"+bookID+"' ");
-
             while (iss.next()){
             dueString = iss.value(6).toString();
             due = QDate::fromString(dueString, "MM/dd/yyyy");
+            //check if the book is returned late
             qint64 dateDiff = due.daysTo(today);
             if (dateDiff > 0){
                 ui->lineLatePenalty->setText(lpenalty.setNum(latePenalty));
@@ -336,7 +337,7 @@ void MainLibraryWindow::on_issueButton_clicked()
         qnty = quantity.toInt();
 
 
-        if (qnty == 1){
+        if (qnty == 1){ //The last book cannot be issued.
             QMessageBox::about(this, "Cannot Issue Book.", "This is the last copy.");
         }
         else if (qnty > 1){
@@ -348,6 +349,8 @@ void MainLibraryWindow::on_issueButton_clicked()
             //execute the query
             query.prepare(qry);
             query.exec();
+
+            //update the books database with the new quantity
             book.exec("update books set Quantity='"+quantity+"' where BookID='"+bookID+"'");
 
             if (qnty == 1){
@@ -366,17 +369,11 @@ void MainLibraryWindow::on_issueButton_clicked()
         }
     }
 
-
-
-
 }
-
-
-
-
 
 void MainLibraryWindow::on_returnButton_clicked()
 {
+    //initialize the variables
     QSqlQuery query,del,book,upd;
     QString bookID,userID,transNum,quantity,late,damage,pen,bookName;
     int totalPenalty, qnty;
@@ -384,9 +381,11 @@ void MainLibraryWindow::on_returnButton_clicked()
     userID = ui->lineUserID2->text();
     late = ui->lineLatePenalty->text();
     damage = ui->lineDamagePenalty->text();
+
+    //calculate the amount of penalties incurred
     totalPenalty = late.toInt() + damage.toInt();
     pen.setNum(totalPenalty);
-
+    //setup the query
     query.prepare("select * from issued where BookID='"+bookID+"' and UserID='"+userID+"'");
     if (query.exec()){
         int count = 0;
@@ -394,23 +393,27 @@ void MainLibraryWindow::on_returnButton_clicked()
             count ++;
             transNum = query.value(7).toString();
             }
+        //look for the specific book borrowed. If it's not found, show an error
         if (count == 0){
             QMessageBox::about(this, "Error", "No matching issued book.");
         }
         else if (count == 1){
+            //exec query
             book.exec("select * from books where BookID='"+bookID+"'");
             while (book.next()){
-                QSqlRecord record  = book.record();
+                QSqlRecord record  = book.record(); //Record query values
                 quantity = record.value("Quantity").toString();
                 qnty = quantity.toInt();
                 qnty++;
                 quantity = QString::number(qnty);
                 bookName = record.value("BookName").toString();
+
+                //Check if the book is damaged or not, then run the main query
                 if (ui->checkBox->checkState() == false){
                     QMessageBox::about(this, "Penalties", "Total Penalties: '"+pen+"'");
                     del.exec("Delete from issued where TransactionNum='"+transNum+"'");
                     QMessageBox::about(this, "Book Returned", "Book has been returned successfully.");
-                    upd.exec("update books set Status='Available', Quantity='"+quantity+"' where BookID='"+bookID+"'");
+                    upd.exec("update books set Status='Available', Quantity='"+quantity+"' where BookID='"+bookID+"'"); //update the quantity
 
                     //show Message then clear the page
                     ui->statusbar->showMessage("Book Returned", 3000);
@@ -420,7 +423,7 @@ void MainLibraryWindow::on_returnButton_clicked()
                     QMessageBox::about(this, "Penalties", "Total Penalties: '"+pen+"'");
                     del.exec("Delete from issued where TransactionNum='"+transNum+"'");
                     QMessageBox::about(this, "Book Returned", "Book has been added to Damaged Books.");
-                    upd.exec("insert into damagedBooks (BookID,BookName) values ('"+bookID+"', '"+bookName+"')");
+                    upd.exec("insert into damagedBooks (BookID,BookName) values ('"+bookID+"', '"+bookName+"')"); //add the book to damaged books
 
                     //show Message then clear the page
                     ui->statusbar->showMessage("Book added to Damaged books", 3000);
