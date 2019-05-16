@@ -88,6 +88,7 @@ void MainLibraryWindow::loadReturnPage(){
     ui->linePubYear2->setText("");
     ui->lineUserName2->setText("");
     ui->lineUserType2->setText("");
+    ui->lineUserID2->setText("");
 
 
     //initialize the table view
@@ -218,6 +219,13 @@ void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Querie
         while (iss.next()){
         QString dueString = iss.value("DateDue").toString();
         due = QDate::fromString(dueString, "MM/dd/yyyy");
+        qint64 dateDiff = due.daysTo(today);
+        if (dateDiff > 0){
+            ui->lineLatePenalty->setText(lpenalty.setNum(latePenalty));
+        }
+        else{
+            ui->lineLatePenalty->setText("0");
+        }
         ui->dateReturn->setDate(due);
         model->setQuery(iss);
         ui->tableReturn->setModel(model);
@@ -249,7 +257,13 @@ void MainLibraryWindow::on_lineUserID2_textChanged(const QString &arg1)
             while (iss.next()){
             dueString = iss.value(6).toString();
             due = QDate::fromString(dueString, "MM/dd/yyyy");
-
+            qint64 dateDiff = due.daysTo(today);
+            if (dateDiff > 0){
+                ui->lineLatePenalty->setText(lpenalty.setNum(latePenalty));
+            }
+            else{
+                ui->lineLatePenalty->setText("0");
+            }
             ui->dateReturn->setDate(due);
             model->setQuery(iss);
             ui->tableReturn->setModel(model);
@@ -279,9 +293,9 @@ void MainLibraryWindow::on_pushButton_clicked()
 void MainLibraryWindow::on_checkBox_toggled(bool checked)
 {
     //retrieves the Damage Penalty value and shows it on the Returns page if applicable
-    penalty.setNum(damagePenalty);
+    dpenalty.setNum(damagePenalty);
     if (checked == true){
-        ui->lineDamagePenalty->setText(penalty);
+        ui->lineDamagePenalty->setText(dpenalty);
     }
     else{
         ui->lineDamagePenalty->setText("0");
@@ -360,3 +374,63 @@ void MainLibraryWindow::on_issueButton_clicked()
 
 
 
+
+void MainLibraryWindow::on_returnButton_clicked()
+{
+    QSqlQuery query,del,book,upd;
+    QString bookID,userID,transNum,quantity,late,damage,pen,bookName;
+    int totalPenalty, qnty;
+    bookID = ui->lineBookID2->text();
+    userID = ui->lineUserID2->text();
+    late = ui->lineLatePenalty->text();
+    damage = ui->lineDamagePenalty->text();
+    totalPenalty = late.toInt() + damage.toInt();
+    pen.setNum(totalPenalty);
+
+    query.prepare("select * from issued where BookID='"+bookID+"' and UserID='"+userID+"'");
+    if (query.exec()){
+        int count = 0;
+        while (query.next()){
+            count ++;
+            transNum = query.value(7).toString();
+            }
+        if (count == 0){
+            QMessageBox::about(this, "Error", "No matching issued book.");
+        }
+        else if (count == 1){
+            book.exec("select * from books where BookID='"+bookID+"'");
+            while (book.next()){
+                QSqlRecord record  = book.record();
+                quantity = record.value("Quantity").toString();
+                qnty = quantity.toInt();
+                qnty++;
+                quantity = QString::number(qnty);
+                bookName = record.value("BookName").toString();
+                if (ui->checkBox->checkState() == false){
+                    QMessageBox::about(this, "Penalties", "Total Penalties: '"+pen+"'");
+                    del.exec("Delete from issued where TransactionNum='"+transNum+"'");
+                    QMessageBox::about(this, "Book Returned", "Book has been returned successfully.");
+                    upd.exec("update books set Status='Available', Quantity='"+quantity+"' where BookID='"+bookID+"'");
+
+                    //show Message then clear the page
+                    ui->statusbar->showMessage("Book Returned", 3000);
+                    loadReturnPage();
+                }
+                else {
+                    QMessageBox::about(this, "Penalties", "Total Penalties: '"+pen+"'");
+                    del.exec("Delete from issued where TransactionNum='"+transNum+"'");
+                    QMessageBox::about(this, "Book Returned", "Book has been added to Damaged Books.");
+                    upd.exec("insert into damagedBooks (BookID,BookName) values ('"+bookID+"', '"+bookName+"')");
+
+                    //show Message then clear the page
+                    ui->statusbar->showMessage("Book added to Damaged books", 3000);
+                    loadReturnPage();
+                }
+
+            }
+
+        }
+
+    }
+
+}

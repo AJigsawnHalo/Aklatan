@@ -39,7 +39,7 @@ private slots:
 
     void on_issueButton_clicked();
 
-    //void on_returnButton_clicked();
+    void on_returnButton_clicked();
 
     void on_lineUserID2_textChanged(const QString &arg1);
 
