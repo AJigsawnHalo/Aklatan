@@ -56,6 +56,9 @@ void MainLibraryWindow::loadIssuePage(){
     ui->linePublisher->setText("");
     ui->lineEdition->setText("");
     ui->linePubYear->setText("");
+    ui->lineUserID->setText("");
+    ui->lineUserName->setText("");
+    ui->lineUserType->setText("");
 
     //initialize the table view
     QSqlQuery query;
@@ -151,7 +154,7 @@ void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
-    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    query.prepare("SELECT * FROM BOOKS WHERE BookID='"+bookID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
             ui->lineBookName->setText(query.value(1).toString());
@@ -171,13 +174,31 @@ void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries
 
 }
 
+void MainLibraryWindow::on_lineUserID_textChanged(const QString &arg1)
+{
+    QString ID = arg1;
+    QSqlQuery query; //initialize the query
+    query.prepare("SELECT * FROM USERS WHERE UserID='"+ID+"' ");
+    if (query.exec()){
+        while (query.next()){ //This sets the text to the corresponding query
+            ui->lineUserName->setText(query.value(1).toString());
+            ui->lineUserType->setText(query.value(4).toString());
+
+        }
+
+    }
+    else{
+        qDebug() << "Database Failed";
+    }
+}
+
 void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Queries the database for the book using the book ID
 {
 
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
-    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    query.prepare("SELECT * FROM BOOKS WHERE BookID='"+bookID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
             ui->lineBookName2->setText(query.value(1).toString());
@@ -227,4 +248,63 @@ void MainLibraryWindow::on_refreshButton_2_clicked()
 void MainLibraryWindow::on_refreshButton_clicked()
 {
     ui->statusbar->showMessage("Cleared", 3000);
+}
+
+
+
+void MainLibraryWindow::on_issueButton_clicked()
+{
+    QSqlQuery query,quant,book; //initialize the variables
+    QString bookID,bookName,userID,userName,category,dateIss,dateDue,qry,bk,quantity;
+
+    int qnty;
+    bookID = ui->lineBookID->text();
+    bookName = ui->lineBookName->text();
+    userID = ui->lineUserID->text();
+    userName = ui->lineUserName->text();
+    category = ui->lineCategory->text();
+    dateIss = ui->dateIssued->text();
+    dateDue = ui->dateDue->text();
+
+
+    quant.exec("select Quantity from books where BookID='"+bookID+"'"); //get the quantity of books left
+    while (quant.next()){
+        QSqlRecord record = quant.record();
+        quantity = record.value("Quantity").toString();
+        qnty = quantity.toInt();
+
+
+        if (qnty == 1){
+            QMessageBox::about(this, "Cannot Issue Book.", "This is the last copy.");
+        }
+        else if (qnty > 1){
+            qry = "insert into issued (BookID,BookName,UserID,UserName,Category,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateDue+"')";
+            bk = "update books set Quantity='"+quantity+"' where BookID='"+bookID+"' ";
+            qnty = qnty - 1;
+            quantity = QString::number(qnty);
+
+            //execute the query
+            query.prepare(qry);
+            query.exec();
+            book.exec("update books set Quantity='"+quantity+"' where BookID='"+bookID+"'");
+
+            if (qnty == 1){
+                book.exec("update books set Status='Not Available' where BookID='"+bookID+"'");
+            }
+            else{
+                book.exec("update books set Status='Available' where BookID='"+bookID+"'");
+            }
+
+            QMessageBox::about(this, "Book Issued", "Book has been issued successfully.");
+
+            //show Message then clear the page
+            ui->statusbar->showMessage("Book Issued", 3000);
+            loadIssuePage();
+
+        }
+    }
+
+
+
+
 }

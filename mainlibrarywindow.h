@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include <QSqlRecord>
 #include "dbmanager.h"
 namespace Ui {
 class MainLibraryWindow;
@@ -33,6 +34,10 @@ private slots:
     void on_refreshButton_2_clicked();
 
     void on_refreshButton_clicked();
+
+    void on_lineUserID_textChanged(const QString &arg1);
+
+    void on_issueButton_clicked();
 
 private:
     Ui::MainLibraryWindow *ui;
