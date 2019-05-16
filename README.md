@@ -21,7 +21,6 @@ If you would like to contribute, please go to the [Github Page.](https://github.
 ### Things I'm working on.
 *   Main Library window.
     * Issue, Return, Book Report, and Add User/Book Pages
-    * Late Penalty and Damage Penalty Calculation
 
 ### Things to be done in the future
 *   User-facing Windows
@@ -29,6 +28,8 @@ If you would like to contribute, please go to the [Github Page.](https://github.
     * Search Window
 *   Original LMS hardware support
 
+## License
+Aklatan is licensed under [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl.txt).
 
 ## Related Links
 *	[GitHub Repo](https://github.com/AJigsawnHalo/aklatan "Aklatan GitHub repo")
