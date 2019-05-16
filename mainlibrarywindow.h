@@ -34,6 +34,8 @@ private slots:
 
     void on_refreshButton_clicked();
 
+    void on_lineUserID_textChanged(const QString &arg1);
+
 private:
     Ui::MainLibraryWindow *ui;
 };

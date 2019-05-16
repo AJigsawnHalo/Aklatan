@@ -56,6 +56,9 @@ void MainLibraryWindow::loadIssuePage(){
     ui->linePublisher->setText("");
     ui->lineEdition->setText("");
     ui->linePubYear->setText("");
+    ui->lineUserID->setText("");
+    ui->lineUserName->setText("");
+    ui->lineUserType->setText("");
 
     //initialize the table view
     QSqlQuery query;
@@ -151,7 +154,7 @@ void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
-    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    query.prepare("SELECT * FROM BOOKS WHERE BookID='"+bookID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
             ui->lineBookName->setText(query.value(1).toString());
@@ -171,13 +174,33 @@ void MainLibraryWindow::on_lineBookID_textChanged(const QString &arg1) //Queries
 
 }
 
+void MainLibraryWindow::on_lineUserID_textChanged(const QString &arg1)
+{
+    QString ID = arg1;
+    QSqlQuery query; //initialize the query
+    QSqlQueryModel * model = new QSqlQueryModel();
+    query.prepare("SELECT * FROM USERS WHERE UserID='"+ID+"' ");
+    if (query.exec()){
+        while (query.next()){ //This sets the text to the corresponding query
+            ui->lineUserName->setText(query.value(1).toString());
+            ui->lineUserType->setText(query.value(4).toString());
+            model->setQuery(query);
+            ui->tableReturn->setModel(model);
+        }
+
+    }
+    else{
+        qDebug() << "Database Failed";
+    }
+}
+
 void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Queries the database for the book using the book ID
 {
 
     QString bookID = arg1;
     QSqlQuery query; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
-    query.prepare("SELECT * FROM BOOKS WHERE ID='"+bookID+"' ");
+    query.prepare("SELECT * FROM BOOKS WHERE BookID='"+bookID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
             ui->lineBookName2->setText(query.value(1).toString());
@@ -228,3 +251,5 @@ void MainLibraryWindow::on_refreshButton_clicked()
 {
     ui->statusbar->showMessage("Cleared", 3000);
 }
+
+
