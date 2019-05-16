@@ -86,11 +86,14 @@ void MainLibraryWindow::loadReturnPage(){
     ui->linePublisher2->setText("");
     ui->lineEdition2->setText("");
     ui->linePubYear2->setText("");
+    ui->lineUserName2->setText("");
+    ui->lineUserType2->setText("");
+
 
     //initialize the table view
     QSqlQuery query;
     QSqlQueryModel * model = new QSqlQueryModel();
-    query.prepare("SELECT * FROM BOOKS");
+    query.prepare("SELECT * FROM issued");
     query.exec();
     model->setQuery(query);
     ui->tableReturn->setModel(model);
@@ -196,8 +199,10 @@ void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Querie
 {
 
     QString bookID = arg1;
-    QSqlQuery query; //initialize the query
+    QSqlQuery query,iss; //initialize the query
     QSqlQueryModel * model = new QSqlQueryModel();
+    QString ID = ui->lineUserID2->text();
+    QDate due;
     query.prepare("SELECT * FROM BOOKS WHERE BookID='"+bookID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
@@ -207,14 +212,57 @@ void MainLibraryWindow::on_lineBookID2_textChanged(const QString &arg1) //Querie
             ui->linePublisher2->setText(query.value(4).toString());
             ui->lineEdition2->setText(query.value(5).toString());
             ui->linePubYear2->setText(query.value(6).toString());
-            model->setQuery(query);
-            ui->tableReturn->setModel(model);
+
+        }
+        iss.exec("SELECT * FROM issued WHERE UserID='"+ID+"' and BookID='"+bookID+"' ");
+        while (iss.next()){
+        QString dueString = iss.value("DateDue").toString();
+        due = QDate::fromString(dueString, "MM/dd/yyyy");
+        ui->dateReturn->setDate(due);
+        model->setQuery(iss);
+        ui->tableReturn->setModel(model);
         }
 
     }
     else{
         qDebug() << "Database Failed";
     }
+}
+
+void MainLibraryWindow::on_lineUserID2_textChanged(const QString &arg1)
+{
+    QString ID = arg1;
+    QSqlQuery query,iss; //initialize the query
+    QSqlQueryModel * model = new QSqlQueryModel;
+    QString bookID = ui->lineBookID2->text();
+    QDate due;
+    QString dueString;
+    query.prepare("SELECT * FROM issued WHERE UserID='"+ID+"' ");
+    if (query.exec()){
+
+        while (query.next()){ //This sets the text to the corresponding query
+
+            ui->lineUserName2->setText(query.value(3).toString());
+            ui->lineUserType2->setText(query.value(4).toString());
+            iss.exec("SELECT * FROM issued WHERE UserID='"+ID+"' and BookID='"+bookID+"' ");
+
+            while (iss.next()){
+            dueString = iss.value(6).toString();
+            due = QDate::fromString(dueString, "MM/dd/yyyy");
+
+            ui->dateReturn->setDate(due);
+            model->setQuery(iss);
+            ui->tableReturn->setModel(model);
+            }
+
+        }
+
+
+    }
+    else{
+        qDebug() << "Database Failed";
+    }
+
 }
 
 
@@ -262,7 +310,7 @@ void MainLibraryWindow::on_issueButton_clicked()
     bookName = ui->lineBookName->text();
     userID = ui->lineUserID->text();
     userName = ui->lineUserName->text();
-    category = ui->lineCategory->text();
+    category = ui->lineUserType->text();
     dateIss = ui->dateIssued->text();
     dateDue = ui->dateDue->text();
 
@@ -278,7 +326,7 @@ void MainLibraryWindow::on_issueButton_clicked()
             QMessageBox::about(this, "Cannot Issue Book.", "This is the last copy.");
         }
         else if (qnty > 1){
-            qry = "insert into issued (BookID,BookName,UserID,UserName,Category,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateDue+"')";
+            qry = "insert into issued (BookID,BookName,UserID,UserName,UserType,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateDue+"')";
             bk = "update books set Quantity='"+quantity+"' where BookID='"+bookID+"' ";
             qnty = qnty - 1;
             quantity = QString::number(qnty);
@@ -308,3 +356,7 @@ void MainLibraryWindow::on_issueButton_clicked()
 
 
 }
+
+
+
+
