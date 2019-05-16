@@ -10,7 +10,8 @@ QT_END_NAMESPACE
 extern QString dbName;
 extern float damagePenalty;
 extern float latePenalty;
-extern QString penalty;
+extern QString lpenalty;
+extern QString dpenalty;
 extern QDate today;
 extern QDate dueDate;
 extern int daysDue;
