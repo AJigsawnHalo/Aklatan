@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include <QSqlRecord>
 #include "dbmanager.h"
 namespace Ui {
 class MainLibraryWindow;

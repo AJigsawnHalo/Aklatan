@@ -254,22 +254,57 @@ void MainLibraryWindow::on_refreshButton_clicked()
 
 void MainLibraryWindow::on_issueButton_clicked()
 {
-    QSqlQuery query,bk; //initialize the variables
-    QString bookID,bookName,userID,userName,category,dateIss,dateDue,qry;
+    QSqlQuery query,quant,book; //initialize the variables
+    QString bookID,bookName,userID,userName,category,dateIss,dateDue,qry,bk,quantity;
+
+    int qnty;
     bookID = ui->lineBookID->text();
     bookName = ui->lineBookName->text();
     userID = ui->lineUserID->text();
     userName = ui->lineUserName->text();
     category = ui->lineCategory->text();
     dateIss = ui->dateIssued->text();
-    dateDue = ui->dateReturn->text();
-    qry = "insert into issued (BookID,BookName,UserID,UserName,Category,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateIss+"')";
+    dateDue = ui->dateDue->text();
 
-    //execute the query
-    query.prepare(qry);
-    query.exec();
 
-    //show Message then clear the page
-    ui->statusbar->showMessage("Book Issued", 3000);
-    loadIssuePage();
+    quant.exec("select Quantity from books where BookID='"+bookID+"'"); //get the quantity of books left
+    while (quant.next()){
+        QSqlRecord record = quant.record();
+        quantity = record.value("Quantity").toString();
+        qnty = quantity.toInt();
+
+
+        if (qnty == 1){
+            QMessageBox::about(this, "Cannot Issue Book.", "This is the last copy.");
+        }
+        else if (qnty > 1){
+            qry = "insert into issued (BookID,BookName,UserID,UserName,Category,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateDue+"')";
+            bk = "update books set Quantity='"+quantity+"' where BookID='"+bookID+"' ";
+            qnty = qnty - 1;
+            quantity = QString::number(qnty);
+
+            //execute the query
+            query.prepare(qry);
+            query.exec();
+            book.exec("update books set Quantity='"+quantity+"' where BookID='"+bookID+"'");
+
+            if (qnty == 1){
+                book.exec("update books set Status='Not Available' where BookID='"+bookID+"'");
+            }
+            else{
+                book.exec("update books set Status='Available' where BookID='"+bookID+"'");
+            }
+
+            QMessageBox::about(this, "Book Issued", "Book has been issued successfully.");
+
+            //show Message then clear the page
+            ui->statusbar->showMessage("Book Issued", 3000);
+            loadIssuePage();
+
+        }
+    }
+
+
+
+
 }
