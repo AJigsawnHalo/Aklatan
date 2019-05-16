@@ -16,7 +16,8 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 *   Make it easier to setup for multiple computers.
 
 ## Contribute
-If you would like to contribute, please go to the [Github Page.](https://github.com/AJigsawnHalo/aklatan) I'm a begginer at both Qt and C++ and I'm still learning so the code might be a bit inefficient and messy some times. 
+If you would like to contribute, please go to the [Github repo](https://github.com/AJigsawnHalo/aklatan) and open an [issue](https://github.com/AJigsawnHalo/Aklatan/issues) or submit a [pull request](https://github.com/AJigsawnHalo/Aklatan/pulls).
+I'm a begginer at both Qt and C++ and I'm still learning so the code might be a bit inefficient and messy some times. 
 
 ### Things I'm working on.
 *   Main Library window.
