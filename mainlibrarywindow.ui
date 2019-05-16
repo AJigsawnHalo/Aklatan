@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout_11">
@@ -238,7 +238,7 @@
            </widget>
           </item>
           <item row="0" column="3">
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="issueButton">
             <property name="text">
              <string>Issue</string>
             </property>
@@ -314,6 +314,172 @@
         </item>
         <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
+          <item row="5" column="2">
+           <widget class="QLineEdit" name="lineEdition">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLineEdit" name="linePubYear">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="3">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Date Due: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QLabel" name="labelUserType">
+            <property name="text">
+             <string>Borrower Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLineEdit" name="lineBookID"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="lineCategory">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelCategory">
+            <property name="text">
+             <string>Category:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="linePublisher">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="lineBookName">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QLineEdit" name="lineUserType"/>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="lineAuthor">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="4">
+           <widget class="QDateEdit" name="dateDue">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="locale">
+             <locale language="English" country="UnitedStates"/>
+            </property>
+            <property name="displayFormat">
+             <string>MM/dd/yyyy</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelBookAuthor">
+            <property name="text">
+             <string>Author:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="labelEdition">
+            <property name="text">
+             <string>Edition:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelPublisher">
+            <property name="text">
+             <string>Publisher:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="labelPubYear">
+            <property name="text">
+             <string>Publishing Year:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelBookName">
+            <property name="text">
+             <string>Book Name:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QLineEdit" name="lineUserID"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelBookID">
+            <property name="text">
+             <string>Book ID</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="labelUserID">
+            <property name="text">
+             <string>Borrower ID:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QLineEdit" name="lineUserName"/>
+          </item>
           <item row="4" column="4">
            <widget class="QDateEdit" name="dateIssued">
             <property name="sizePolicy">
@@ -343,124 +509,6 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="2">
-           <widget class="QLineEdit" name="lineEdition">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLineEdit" name="lineBookName">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="3">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Date Due: </string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="labelUserID">
-            <property name="text">
-             <string>Borrower ID:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2">
-           <widget class="QLineEdit" name="linePubYear">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="labelCategory">
-            <property name="text">
-             <string>Category:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="labelBookID">
-            <property name="text">
-             <string>Book ID</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="labelPublisher">
-            <property name="text">
-             <string>Publisher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="4">
-           <widget class="QLineEdit" name="lineUserType"/>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLineEdit" name="lineBookID"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="labelEdition">
-            <property name="text">
-             <string>Edition:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="labelBookAuthor">
-            <property name="text">
-             <string>Author:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="4">
-           <widget class="QDateEdit" name="dateDue">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>120</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="locale">
-             <locale language="English" country="UnitedStates"/>
-            </property>
-            <property name="displayFormat">
-             <string>MM/dd/yyyy</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="labelBookName">
-            <property name="text">
-             <string>Book Name:</string>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="3">
            <widget class="QLabel" name="label_4">
             <property name="text">
@@ -468,49 +516,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="4">
-           <widget class="QLineEdit" name="lineUserName"/>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLineEdit" name="lineCategory">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QLineEdit" name="lineAuthor">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="3">
-           <widget class="QLabel" name="labelUserType">
-            <property name="text">
-             <string>Borrower Type:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="2" colspan="3">
+          <item row="7" column="2" rowspan="2" colspan="3">
            <widget class="QTableView" name="tableIssue"/>
-          </item>
-          <item row="0" column="4">
-           <widget class="QLineEdit" name="lineUserID"/>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLineEdit" name="linePublisher">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="labelPubYear">
-            <property name="text">
-             <string>Publishing Year:</string>
-            </property>
-           </widget>
           </item>
          </layout>
         </item>

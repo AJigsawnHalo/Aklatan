@@ -178,14 +178,12 @@ void MainLibraryWindow::on_lineUserID_textChanged(const QString &arg1)
 {
     QString ID = arg1;
     QSqlQuery query; //initialize the query
-    QSqlQueryModel * model = new QSqlQueryModel();
     query.prepare("SELECT * FROM USERS WHERE UserID='"+ID+"' ");
     if (query.exec()){
         while (query.next()){ //This sets the text to the corresponding query
             ui->lineUserName->setText(query.value(1).toString());
             ui->lineUserType->setText(query.value(4).toString());
-            model->setQuery(query);
-            ui->tableReturn->setModel(model);
+
         }
 
     }
@@ -253,3 +251,25 @@ void MainLibraryWindow::on_refreshButton_clicked()
 }
 
 
+
+void MainLibraryWindow::on_issueButton_clicked()
+{
+    QSqlQuery query,bk; //initialize the variables
+    QString bookID,bookName,userID,userName,category,dateIss,dateDue,qry;
+    bookID = ui->lineBookID->text();
+    bookName = ui->lineBookName->text();
+    userID = ui->lineUserID->text();
+    userName = ui->lineUserName->text();
+    category = ui->lineCategory->text();
+    dateIss = ui->dateIssued->text();
+    dateDue = ui->dateReturn->text();
+    qry = "insert into issued (BookID,BookName,UserID,UserName,Category,dateIssued,dateDue) values ('"+bookID+"', '"+bookName+"', '"+userID+"', '"+userName+"', '"+category+"', '"+dateIss+"', '"+dateIss+"')";
+
+    //execute the query
+    query.prepare(qry);
+    query.exec();
+
+    //show Message then clear the page
+    ui->statusbar->showMessage("Book Issued", 3000);
+    loadIssuePage();
+}

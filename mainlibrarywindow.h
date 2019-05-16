@@ -36,6 +36,8 @@ private slots:
 
     void on_lineUserID_textChanged(const QString &arg1);
 
+    void on_issueButton_clicked();
+
 private:
     Ui::MainLibraryWindow *ui;
 };
