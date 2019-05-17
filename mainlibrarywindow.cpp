@@ -39,15 +39,30 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     connect(ui->homeAdd, SIGNAL(pressed()), this, SLOT(passRegisterBook()));
     connect(ui->actionAdd_Book, SIGNAL(triggered()), this, SLOT(passRegisterBook()));
     connect(ui->actionAdd_User, SIGNAL(triggered()), this, SLOT(passRegisterUser()));
+
+
 }
 
 MainLibraryWindow::~MainLibraryWindow()
 {
     delete ui;
 }
+
+void MainLibraryWindow::loadStatus()
+{
+    QSqlQuery stat;
+    QString iss;
+    int rows;
+    stat.exec("select * from issued");
+    stat.last();
+    rows = stat.at() + 1;
+    iss = QString::number(rows);
+    ui->labelIssued->setText(iss);
+}
 //Loading the Home Page
 void MainLibraryWindow::loadHomePage(){
     ui->stackedWidget->setCurrentIndex(0);
+    loadStatus();
 }
 //Loading the Issue Books Page
 void MainLibraryWindow::loadIssuePage(){

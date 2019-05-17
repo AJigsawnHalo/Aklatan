@@ -16,6 +16,7 @@ class MainLibraryWindow : public QMainWindow
 public:
     explicit MainLibraryWindow(QWidget *parent = nullptr);
     ~MainLibraryWindow();
+    void loadStatus();
 
 
 private slots:
@@ -42,6 +43,7 @@ private slots:
     void on_spinQuantity_valueChanged(int arg1);
     void on_regRegButton_clicked();
     void on_regClear_clicked();
+
 
 private:
     Ui::MainLibraryWindow *ui;
