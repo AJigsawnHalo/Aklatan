@@ -29,6 +29,8 @@ These instructions are for how Aklatan is currently setup.
 
 ## Build
 ### Dependencies
+*  Git
+*  C++ compiler
 *  [Qt5](https://doc.qt.io/qt-5/index.html) (`qmake`)
 *  [Sqlite v3](https://www.sqlite.org/index.html) (Not needed in building. Only for normal operation)
 
