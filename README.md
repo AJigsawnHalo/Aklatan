@@ -54,13 +54,11 @@ If you would like to contribute, please go to the [Github repo](https://github.c
 I'm a begginer at both Qt and C++ and I'm still learning so the code might be a bit inefficient and messy some times. 
 
 ### Things being worked on.
-*   Main Library window.
-    * Issue, Return, Book Report, and Add User/Book Pages
-
-### Things to be done in the future
 *   User-facing Windows
     * Login Window
     * Search Window
+
+### Things to be done in the future
 *   Original LMS hardware support
 
 ## License
