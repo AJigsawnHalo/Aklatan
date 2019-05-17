@@ -50,14 +50,28 @@ MainLibraryWindow::~MainLibraryWindow()
 
 void MainLibraryWindow::loadStatus()
 {
-    QSqlQuery stat;
-    QString iss;
-    int rows;
+    QSqlQuery stat,dam,all;
+    QString iss,dama,total;
+    int rIss,rDam,rAll;
+
     stat.exec("select * from issued");
     stat.last();
-    rows = stat.at() + 1;
-    iss = QString::number(rows);
-    ui->labelIssued->setText(iss);
+    rIss = stat.at() + 1;
+    iss = QString::number(rIss);
+    ui->labelIssued->setText(iss + " Books Currently Issued");
+
+    all.exec("select * from books");
+    all.last();
+    rAll = all.at() + 1;
+    total = QString::number(rAll);
+    ui->labelAll->setText("There are "+total+" books in the Library");
+
+    dam.exec("select * from damagedBooks");
+    dam.last();
+    rDam = dam.at() + 1;
+    dama = QString::number(rDam);
+    ui->labelDamage->setText("There are " + dama + " Damaged Books");
+
 }
 //Loading the Home Page
 void MainLibraryWindow::loadHomePage(){
