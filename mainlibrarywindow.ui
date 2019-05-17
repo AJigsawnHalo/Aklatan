@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout_11">
@@ -381,7 +381,11 @@
            </widget>
           </item>
           <item row="2" column="4">
-           <widget class="QLineEdit" name="lineUserType"/>
+           <widget class="QLineEdit" name="lineUserType">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item row="3" column="2">
            <widget class="QLineEdit" name="lineAuthor">
@@ -478,7 +482,11 @@
            </widget>
           </item>
           <item row="1" column="4">
-           <widget class="QLineEdit" name="lineUserName"/>
+           <widget class="QLineEdit" name="lineUserName">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item row="4" column="4">
            <widget class="QDateEdit" name="dateIssued">
@@ -626,6 +634,9 @@
           </item>
           <item row="4" column="3">
            <widget class="QLineEdit" name="lineLatePenalty">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
@@ -650,6 +661,9 @@
           </item>
           <item row="5" column="3">
            <widget class="QLineEdit" name="lineDamagePenalty">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
@@ -704,7 +718,11 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QLineEdit" name="lineUserName2"/>
+           <widget class="QLineEdit" name="lineUserName2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="label_UserName2">
@@ -728,6 +746,9 @@
           </item>
           <item row="2" column="3">
            <widget class="QLineEdit" name="lineUserType2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
