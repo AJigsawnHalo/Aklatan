@@ -25,23 +25,22 @@ private slots:
     void loadReturnPage();
     void loadHomePage();
     void loadReportPage(const int &arg);
+    void loadRegisterPage(const int &arg);
+    void passRegisterBook();
+    void passRegisterUser();
     void passReportLoadAll();
     void passReportLoadIss();
     void on_actionExit_triggered();
     void on_pushButton_clicked();
     void on_checkBox_toggled(bool checked);
-
     void on_refreshButton_2_clicked();
-
     void on_refreshButton_clicked();
-
     void on_lineUserID_textChanged(const QString &arg1);
-
     void on_issueButton_clicked();
-
     void on_returnButton_clicked();
-
     void on_lineUserID2_textChanged(const QString &arg1);
+
+    void on_spinQuantity_valueChanged(int arg1);
 
 private:
     Ui::MainLibraryWindow *ui;

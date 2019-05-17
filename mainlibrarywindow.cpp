@@ -18,6 +18,7 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     connect(ui->returnHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
     connect(ui->actionLibrary_Home, SIGNAL(triggered()), this, SLOT(loadHomePage()));
     connect(ui->reportHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
+    connect(ui->regHomeButton, SIGNAL(pressed()), this, SLOT(loadHomePage()));
 
     //connections for the Issue Page
     connect(ui->homeIssueButton, SIGNAL(pressed()), this, SLOT(loadIssuePage()));
@@ -33,6 +34,11 @@ MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
     connect(ui->homeReportButton, SIGNAL(pressed()), this, SLOT(passReportLoadAll()));
     connect(ui->actionAll_Books, SIGNAL(triggered()), this, SLOT(passReportLoadAll()));
     connect(ui->actionIssued_Books, SIGNAL(triggered()), this, SLOT(passReportLoadIss()));
+
+    //connections for the Register Page
+    connect(ui->homeAdd, SIGNAL(pressed()), this, SLOT(passRegisterBook()));
+    connect(ui->actionAdd_Book, SIGNAL(triggered()), this, SLOT(passRegisterBook()));
+    connect(ui->actionAdd_User, SIGNAL(triggered()), this, SLOT(passRegisterUser()));
 }
 
 MainLibraryWindow::~MainLibraryWindow()
@@ -150,6 +156,40 @@ void MainLibraryWindow::loadReportPage(const int &arg)
     ui->tableAll->setColumnWidth(1, 200);
     ui->tableIssued->setColumnWidth(1, 200);
 
+
+}
+
+void MainLibraryWindow::passRegisterBook()
+{
+    MainLibraryWindow::loadRegisterPage(0);
+}
+
+void MainLibraryWindow::passRegisterUser()
+{
+    MainLibraryWindow::loadRegisterPage(1);
+}
+
+void MainLibraryWindow::loadRegisterPage(const int &arg)
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    //load tab
+    ui->tabWidAdd->setCurrentIndex(arg);
+
+    //initialize the Register page
+    ui->lineRegBookID->setText("");
+    ui->lineRegBookName->setText("");
+    ui->lineRegCategory->setText("");
+    ui->lineRegAuthor->setText("");
+    ui->lineRegPubYear->setText("");
+    ui->lineRegEdition->setText("");
+    ui->lineRegPubYear->setText("");
+    ui->spinQuantity->setValue(1);
+    ui->lineRegStatus->setText("Not Available");
+    ui->lineRegUserID->setText("");
+    ui->lineRegUserName->setText("");
+    ui->lineRegAddress->setText("");
+    ui->lineRegContact->setText("");
+    ui->comboUserType->setCurrentIndex(0);
 
 }
 
@@ -436,4 +476,20 @@ void MainLibraryWindow::on_returnButton_clicked()
 
     }
 
+}
+
+void MainLibraryWindow::on_spinQuantity_valueChanged(int arg1)
+{
+    if (arg1 > 1){
+        ui->lineRegStatus->setText("Available");
+
+    }
+    else if (arg1 < 1){
+        QMessageBox::about(this, "Error", "Cannot have less than one book.");
+        ui->spinQuantity->setValue(1);
+
+    }
+    else {
+        ui->lineRegStatus->setText("Not Available");
+    }
 }
