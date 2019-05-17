@@ -110,7 +110,7 @@ void MainLibraryWindow::loadReturnPage(){
     ui->lineLatePenalty->setText("0");
     ui->lineDamagePenalty->setText("0");
 
-    //Temporary date initialization. Will be fixed when an issue and retrun function has been built.
+    //Temporary date initialization.
     ui->dateReturn->setDate(dueDate);
 }
 
@@ -180,7 +180,7 @@ void MainLibraryWindow::loadRegisterPage(const int &arg)
     ui->lineRegBookName->setText("");
     ui->lineRegCategory->setText("");
     ui->lineRegAuthor->setText("");
-    ui->lineRegPubYear->setText("");
+    ui->lineRegPublisher->setText("");
     ui->lineRegEdition->setText("");
     ui->lineRegPubYear->setText("");
     ui->spinQuantity->setValue(1);
@@ -323,12 +323,24 @@ void MainLibraryWindow::on_lineUserID2_textChanged(const QString &arg1)
 
 void MainLibraryWindow::on_actionExit_triggered()
 {
-    QApplication::quit();
+    QMessageBox::StandardButton reply;
+      reply = QMessageBox::question(this, "Quit", "Would You like to exit?",
+                                    QMessageBox::Yes|QMessageBox::No);
+      if (reply == QMessageBox::Yes) {
+
+        QApplication::quit();
+      }
 }
 
 void MainLibraryWindow::on_pushButton_clicked()
 {
-    QApplication::quit();
+    QMessageBox::StandardButton reply;
+      reply = QMessageBox::question(this, "Quit", "Would You like to exit?",
+                                    QMessageBox::Yes|QMessageBox::No);
+      if (reply == QMessageBox::Yes) {
+
+        QApplication::quit();
+      }
 }
 
 void MainLibraryWindow::on_checkBox_toggled(bool checked)
@@ -354,7 +366,7 @@ void MainLibraryWindow::on_refreshButton_clicked()
 }
 
 
-
+//Issue Function
 void MainLibraryWindow::on_issueButton_clicked()
 {
     QSqlQuery query,quant,book; //initialize the variables
@@ -411,6 +423,7 @@ void MainLibraryWindow::on_issueButton_clicked()
 
 }
 
+//Return Function
 void MainLibraryWindow::on_returnButton_clicked()
 {
     //initialize the variables
@@ -491,5 +504,110 @@ void MainLibraryWindow::on_spinQuantity_valueChanged(int arg1)
     }
     else {
         ui->lineRegStatus->setText("Not Available");
+    }
+}
+
+//Register Function
+void MainLibraryWindow::on_regRegButton_clicked()
+{
+    //initialize variables
+    int arg = ui->tabWidAdd->currentIndex();
+    QSqlQuery query,check,add;
+    QString arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9;
+
+    //Checks if it's registering a book or a user
+    if (arg == 0){  //if registering a book
+
+        //set lineEdit values to QString variables
+        arg1 = ui->lineRegBookID->text();
+        arg2 = ui->lineRegBookName->text();
+        arg3 = ui->lineRegCategory->text();
+        arg4 = ui->lineRegAuthor->text();
+        arg5 = ui->lineRegPublisher->text();
+        arg6 = ui->lineRegEdition->text();
+        arg7 = ui->lineRegPubYear->text();
+        arg8 = ui->spinQuantity->text();
+        arg9 = ui->lineRegStatus->text();
+
+        //check if there's a duplicate book using the book ID
+        if (check.exec("select BookID from books where BookID='"+arg1+"'")){
+            int count = 0;
+            while (check.next()){
+                count++;
+            }
+            //if there's no duplicate,
+            if (count == 0){
+                add.exec("insert into books (BookID,BookName,Category,Author,Publisher,Edition,PublishingYear,Quantity,Status) values ('"+arg1+"','"+arg2+"','"+arg3+"','"+arg4+"','"+arg5+"','"+arg6+"','"+arg7+"','"+arg8+"','"+arg9+"')");
+                QMessageBox::about(this, "Book Registered","Book registered successfully.");
+               passRegisterBook();
+            }
+             //if there's a duplicate,
+            else {
+                QMessageBox::StandardButton reply;
+
+                //ask if they would like to update the existing user instead
+                  reply = QMessageBox::question(this, "Warning.", "A book with the same ID has been found. Would you like to update it instead?",
+                                                QMessageBox::Yes|QMessageBox::No);
+                  if (reply == QMessageBox::Yes) {
+                    query.exec("update books set BookID='"+arg1+"',BookName='"+arg2+"', Category='"+arg3+"', Author='"+arg4+"', Publisher='"+arg5+"', Edition='"+arg6+"', PublishingYear='"+arg7+"', Quantity='"+arg8+"', Status='"+arg9+"' where BookID='"+arg1+"'");
+                    passRegisterBook();
+                  }
+                  else {
+                    QMessageBox::about(this, "", "Book not registered.");
+                  }
+            }
+        }
+
+    }
+    else if (arg == 1){ //if registering a user
+        //set lineEdit values to QString variables
+        arg1 = ui->lineRegUserID->text();
+        arg2 = ui->lineRegUserName->text();
+        arg3 = ui->lineRegAddress->text();
+        arg4 = ui->lineRegContact->text();
+        arg5 = ui->comboUserType->currentText();
+
+        //check if there's a duplicate book using the User ID
+        if (check.exec("select UserID from users where UserID='"+arg1+"'")){
+            int count = 0;
+            while (check.next()){
+                count++;
+            }
+            //if there's no duplicate,
+            if (count == 0){
+                add.exec("insert into users (UserID, UserName, UserAddress, UserContactNumber, UserType) values ('"+arg1+"', '"+arg2+"', '"+arg3+"', '"+arg4+"', '"+arg5+"')");
+                QMessageBox::about(this, "User Registered","User registered successfully.");
+                passRegisterUser();
+            }
+           //if there's a duplicate,
+            else {
+                QMessageBox::StandardButton reply;
+
+                //ask if they would like to update the existing user instead
+                  reply = QMessageBox::question(this, "Warning.", "A user with the same ID has been found. Would you like to update it instead?",
+                                                QMessageBox::Yes|QMessageBox::No);
+                  if (reply == QMessageBox::Yes) {
+                    query.exec("update users set UserID='"+arg1+"',UserName='"+arg2+"', UserAddress='"+arg3+"', UserContactNumber='"+arg4+"', UserType='"+arg5+"' where UserID='"+arg1+"'");
+                    QMessageBox::about(this, "User Registered", "User details Updated.");
+                    passRegisterUser();
+                  }
+                  else {
+                    QMessageBox::about(this, "", "User not registered.");
+                  }
+            }
+        }
+
+
+    }
+}
+
+void MainLibraryWindow::on_regClear_clicked()
+{
+    int arg = ui->tabWidAdd->currentIndex();
+    if (arg == 0){
+        passRegisterBook();
+    }
+    else if (arg == 1) {
+        passRegisterUser();
     }
 }

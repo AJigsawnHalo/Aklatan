@@ -979,7 +979,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidAdd">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tabAddBook">
            <attribute name="title">
@@ -1196,6 +1196,13 @@
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_15">
+          <item row="0" column="3">
+           <widget class="QPushButton" name="regRegButton">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QPushButton" name="regHomeButton">
             <property name="text">
@@ -1217,9 +1224,9 @@
            </spacer>
           </item>
           <item row="0" column="2">
-           <widget class="QPushButton" name="regRegButton">
+           <widget class="QPushButton" name="regClear">
             <property name="text">
-             <string>Add</string>
+             <string>Clear</string>
             </property>
            </widget>
           </item>

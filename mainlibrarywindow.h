@@ -39,8 +39,9 @@ private slots:
     void on_issueButton_clicked();
     void on_returnButton_clicked();
     void on_lineUserID2_textChanged(const QString &arg1);
-
     void on_spinQuantity_valueChanged(int arg1);
+    void on_regRegButton_clicked();
+    void on_regClear_clicked();
 
 private:
     Ui::MainLibraryWindow *ui;
