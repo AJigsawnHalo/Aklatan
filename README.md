@@ -40,15 +40,11 @@ These instructions are for how Aklatan is currently setup.
 git clone https://github.com/AJigsawnHalo/Aklatan.git
 cd Aklatan
 ```
-2. To build the Main Library Window, change directory to `library-window`.
-```
-cd library-window
-```
-3. Run `qmake` and `make`.
+2. Run `qmake` and `make`.
 ```
 qmake && make
 ```
-4. Run the program.
+3. Run the program.
 ```
 ./Aklatan
 ```
