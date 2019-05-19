@@ -16,21 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cpp/dbmanager.cpp \
-    cpp/globals.cpp \
-    cpp/loginform.cpp \
-    cpp/main.cpp \
-    cpp/mainlibrarywindow.cpp
+    common/cpp/dbmanager.cpp \
+    common/cpp/globals.cpp \
+    library-window/cpp/loginform.cpp \
+    library-window/cpp/main.cpp \
+    library-window/cpp/mainlibrarywindow.cpp
 
 HEADERS += \
-    headers/dbmanager.h \
-    headers/globals.h \
-    headers/loginform.h \
-    headers/mainlibrarywindow.h
+    common/headers/dbmanager.h \
+    common/headers/globals.h \
+    library-window/headers/loginform.h \
+    library-window/headers/mainlibrarywindow.h
 
 FORMS += \
-    ui/loginform.ui \
-    ui/mainlibrarywindow.ui
+    library-window/ui/loginform.ui \
+    library-window/ui/mainlibrarywindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
