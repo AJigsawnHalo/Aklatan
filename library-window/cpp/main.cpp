@@ -1,5 +1,5 @@
-#include "loginform.h"
-#include "dbmanager.h"
+#include "library-window/headers/loginform.h"
+#include "common/headers/dbmanager.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

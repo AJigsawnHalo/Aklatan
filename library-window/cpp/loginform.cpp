@@ -1,6 +1,6 @@
-#include "loginform.h"
-#include "ui_loginform.h"
-#include "dbmanager.h"
+#include "library-window/headers/loginform.h"
+#include "library-window/ui/ui_loginform.h"
+#include "common/headers/dbmanager.h"
 
 LoginForm::LoginForm(QWidget *parent)
     : QDialog(parent)

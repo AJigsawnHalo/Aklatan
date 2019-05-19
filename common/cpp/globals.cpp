@@ -1,4 +1,4 @@
-#include "globals.h"
+#include "common/headers/globals.h"
 
 QString dbName = "aklatan.db";
 float damagePenalty = 150.0;
