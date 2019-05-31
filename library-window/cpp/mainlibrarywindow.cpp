@@ -76,7 +76,7 @@ void MainLibraryWindow::loadStatus()
 //Loading the Home Page
 void MainLibraryWindow::loadHomePage(){
     ui->stackedWidget->setCurrentIndex(0);
-    //loadStatus();
+    loadStatus();
 }
 //Loading the Issue Books Page
 void MainLibraryWindow::loadIssuePage(){
