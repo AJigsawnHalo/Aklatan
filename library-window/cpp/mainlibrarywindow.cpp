@@ -48,7 +48,7 @@ MainLibraryWindow::~MainLibraryWindow()
     delete ui;
 }
 
-void MainLibraryWindow::loadStatus()
+/*void MainLibraryWindow::loadStatus()
 {
     QSqlQuery stat,dam,all;
     QString iss,dama,total;
@@ -72,7 +72,7 @@ void MainLibraryWindow::loadStatus()
     dama = QString::number(rDam);
     ui->labelDamage->setText("There are " + dama + " Damaged Books");
 
-}
+}*/
 //Loading the Home Page
 void MainLibraryWindow::loadHomePage(){
     ui->stackedWidget->setCurrentIndex(0);
