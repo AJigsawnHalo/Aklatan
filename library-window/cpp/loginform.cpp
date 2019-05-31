@@ -1,5 +1,5 @@
 #include "library-window/headers/loginform.h"
-#include "library-window/ui/ui_loginform.h"
+#include "ui_loginform.h"
 #include "common/headers/dbmanager.h"
 
 LoginForm::LoginForm(QWidget *parent)
@@ -56,7 +56,7 @@ void LoginForm::on_pushButton_clicked()
             //open the Main Library Window if there's a matching username and password then close the Login window.
 
             lib.show();
-            //lib.loadStatus();
+            lib.loadStatus();
             this->hide();
             //db.connClose();
         }

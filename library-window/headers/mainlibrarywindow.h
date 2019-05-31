@@ -16,7 +16,7 @@ class MainLibraryWindow : public QMainWindow
 public:
     explicit MainLibraryWindow(QWidget *parent = nullptr);
     ~MainLibraryWindow();
-    //void loadStatus();
+    void loadStatus();
 
 
 private slots:

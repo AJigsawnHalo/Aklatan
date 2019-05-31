@@ -1,5 +1,5 @@
 #include "library-window/headers/mainlibrarywindow.h"
-#include "library-window/ui/ui_mainlibrarywindow.h"
+#include "ui_mainlibrarywindow.h"
 #include "common/headers/dbmanager.h"
 #include "library-window/headers/loginform.h"
 #include "common/headers/globals.h"
@@ -48,7 +48,7 @@ MainLibraryWindow::~MainLibraryWindow()
     delete ui;
 }
 
-/*void MainLibraryWindow::loadStatus()
+void MainLibraryWindow::loadStatus()
 {
     QSqlQuery stat,dam,all;
     QString iss,dama,total;
@@ -70,13 +70,13 @@ MainLibraryWindow::~MainLibraryWindow()
     dam.last();
     rDam = dam.at() + 1;
     dama = QString::number(rDam);
-    ui->labelDamage->setText("There are " + dama + " Damaged Books");
+    ui->labelDamaged->setText("There are " + dama + " Damaged Books");
 
-}*/
+}
 //Loading the Home Page
 void MainLibraryWindow::loadHomePage(){
     ui->stackedWidget->setCurrentIndex(0);
-    loadStatus();
+    //loadStatus();
 }
 //Loading the Issue Books Page
 void MainLibraryWindow::loadIssuePage(){
