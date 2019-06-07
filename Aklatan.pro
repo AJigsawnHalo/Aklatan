@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     common/cpp/dbmanager.cpp \
     common/cpp/globals.cpp \
+    common/settings/settingsmanager.cpp \
     library-window/cpp/loginform.cpp \
     library-window/cpp/main.cpp \
     library-window/cpp/mainlibrarywindow.cpp
@@ -25,10 +26,12 @@ SOURCES += \
 HEADERS += \
     common/headers/dbmanager.h \
     common/headers/globals.h \
+    common/settings/settingsmanager.h \
     library-window/headers/loginform.h \
     library-window/headers/mainlibrarywindow.h
 
 FORMS += \
+    common/settings/settingsmanager.ui \
     library-window/ui/loginform.ui \
     library-window/ui/mainlibrarywindow.ui
 

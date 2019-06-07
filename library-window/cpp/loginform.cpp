@@ -1,7 +1,8 @@
 #include "library-window/headers/loginform.h"
 #include "ui_loginform.h"
 #include "common/headers/dbmanager.h"
-
+#include "common/settings/settingsmanager.h"
+#include <QDebug>
 LoginForm::LoginForm(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginForm)
@@ -17,6 +18,7 @@ LoginForm::LoginForm(QWidget *parent)
     else{
         ui->labelStatus->setText("Database Connected.");
     }
+
 
 }
 

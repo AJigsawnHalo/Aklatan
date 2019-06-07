@@ -5,6 +5,7 @@
 #include <QtSql>
 #include "library-window/headers/mainlibrarywindow.h"
 #include "common/headers/dbmanager.h"
+#include "common/settings/settingsmanager.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginForm; }
 QT_END_NAMESPACE
@@ -24,5 +25,6 @@ private:
     Ui::LoginForm *ui;
     MainLibraryWindow lib;
     dbManager db;
+    SettingsManager setMan;
 };
 #endif // LOGINFORM_H

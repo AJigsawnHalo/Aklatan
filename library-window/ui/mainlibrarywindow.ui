@@ -151,6 +151,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 	padding: 10px;
@@ -180,6 +183,9 @@
               <width>300</width>
               <height>50</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -211,6 +217,9 @@
               <height>50</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
             <property name="text">
              <string>Add User/Book</string>
             </property>
@@ -235,6 +244,9 @@
               <width>300</width>
               <height>50</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -265,6 +277,9 @@
           </item>
           <item row="0" column="0">
            <widget class="QPushButton" name="pushButton">
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
             <property name="text">
              <string>Exit Aklatan</string>
             </property>
@@ -1267,7 +1282,7 @@
      <x>0</x>
      <y>0</y>
      <width>1010</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

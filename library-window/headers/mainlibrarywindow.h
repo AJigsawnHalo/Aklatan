@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlRecord>
 #include "common/headers/dbmanager.h"
+#include "common/settings/settingsmanager.h"
 namespace Ui {
 class MainLibraryWindow;
 }
@@ -45,8 +46,11 @@ private slots:
     void on_regClear_clicked();
 
 
+    void on_actionPreferences_triggered();
+
 private:
     Ui::MainLibraryWindow *ui;
+    SettingsManager setMan;
 };
 
 #endif // MAINLIBRARYWINDOW_H
