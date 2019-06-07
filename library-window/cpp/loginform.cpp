@@ -55,8 +55,9 @@ void LoginForm::on_pushButton_clicked()
         if(count == 1){
             //open the Main Library Window if there's a matching username and password then close the Login window.
 
-            lib.show();
-            lib.loadStatus();
+            //lib.show();
+           // lib.loadStatus();
+            setMan.show();
             this->hide();
             //db.connClose();
         }
