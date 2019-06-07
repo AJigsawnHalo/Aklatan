@@ -88,8 +88,7 @@ void SettingsManager::on_loadButton_clicked()
        defPass = def[i];
        value = loadSettings(keyPass, group, defPass).toString();
        conf[i] = value;
-       qDebug() << "value: " << value;
-       qDebug() << conf[i];
+
     }
      ui->lineDbName->setText(conf[0]);
      ui->linedamagePenalty->setText(conf[1]);
@@ -111,8 +110,7 @@ void SettingsManager::setConf()
        defPass = def[i];
        value = loadSettings(keyPass, group, defPass).toString();
        conf[i] = value;
-       qDebug() << "value: " << value;
-       qDebug() << conf[i];
+
     }
 
     dbName = conf[0] + ".db";
