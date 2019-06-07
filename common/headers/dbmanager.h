@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QtSql>
 #include <QMainWindow>
+#include "common/settings/settingsmanager.h"
 
 class dbManager : public QMainWindow
 {

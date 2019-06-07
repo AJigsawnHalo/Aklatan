@@ -3,6 +3,12 @@
 
 #include "common/headers/globals.h"
 #include <QtDebug>
+#define keyDB "DatabaseName"
+#define keyDamage "DamagePenalty"
+#define keyLate "LatePenalty"
+#define keyDue "DaysDue"
+
+
 SettingsManager::SettingsManager(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SettingsManager)
@@ -15,15 +21,14 @@ SettingsManager::~SettingsManager()
     delete ui;
 }
 
-QString dbName = "aklatan.db";
-float damagePenalty = 150.0;
-float latePenalty = 150.0;
+QString dbName = "";
+float damagePenalty = 0;
+float latePenalty = 0;
 QString lpenalty;
 QString dpenalty;
 QDate today = QDate::currentDate();
-int daysDue = 3;
+int daysDue = 0;
 QDate dueDate = today.addDays(daysDue);
-
 
 void saveSettings(const QString &key, const QVariant &value, const QString &group)
 {
@@ -43,3 +48,76 @@ QVariant loadSettings(const QString &key, const QString &group, const QVariant &
     settings.endGroup();
     return value;
 }
+
+
+
+void SettingsManager::on_saveButton_clicked()
+{
+    QString dbNameNew, damNew, lateNew, dueNew;
+
+
+    dbNameNew = ui->lineDbName->text();
+    damNew = ui->linedamagePenalty->text();
+    lateNew = ui->lineLatePenalty->text();
+    dueNew = ui->lineDaysDue->text();
+
+    QString group = "Settings";
+    QString key[4] = {keyDB,keyDamage,keyLate,keyDue};
+    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew};
+    QString def[4] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue)};
+    for (int i = 0; i < 4; i++){
+       QString keyPass, confPass, defPass;
+       keyPass = key[i];
+       confPass = conf[i];
+       defPass = def[i];
+       saveSettings(keyPass, confPass, group);
+    }
+}
+
+void SettingsManager::on_loadButton_clicked()
+{
+    QString dbNameNew, damNew, lateNew, dueNew, value;
+
+    QString group = "Settings";
+    QString key[4] = {keyDB,keyDamage,keyLate,keyDue};
+    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew};
+    QString def[4] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue)};
+    for (int i = 0; i < 4; i++){
+       QString keyPass, defPass, confPass;
+       keyPass = key[i];
+       defPass = def[i];
+       value = loadSettings(keyPass, group, defPass).toString();
+       conf[i] = value;
+       qDebug() << "value: " << value;
+       qDebug() << conf[i];
+    }
+     ui->lineDbName->setText(conf[0]);
+     ui->linedamagePenalty->setText(conf[1]);
+     ui->lineLatePenalty->setText(conf[2]);
+     ui->lineDaysDue->setText(conf[3]);
+}
+
+void SettingsManager::setConf()
+{
+    QString dbNameNew, damNew, lateNew, dueNew, value;
+
+    QString group = "Settings";
+    QString key[4] = {keyDB,keyDamage,keyLate,keyDue};
+    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew};
+    QString def[4] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue)};
+    for (int i = 0; i < 4; i++){
+       QString keyPass, defPass, confPass;
+       keyPass = key[i];
+       defPass = def[i];
+       value = loadSettings(keyPass, group, defPass).toString();
+       conf[i] = value;
+       qDebug() << "value: " << value;
+       qDebug() << conf[i];
+    }
+
+    dbName = conf[0] + ".db";
+    damagePenalty = conf[1].toFloat();
+    latePenalty = conf[2].toFloat();
+    daysDue = conf[3].toInt();
+}
+

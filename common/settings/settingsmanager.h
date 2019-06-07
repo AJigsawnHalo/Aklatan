@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QDate>
+#include <tuple>
+using namespace std;
 
 namespace Ui {
 class SettingsManager;
@@ -16,20 +18,33 @@ class SettingsManager : public QMainWindow
 public:
     explicit SettingsManager(QWidget *parent = nullptr);
     ~SettingsManager();
+    void setConf();
+private slots:
+
+
+    void on_saveButton_clicked();
+
+    void on_loadButton_clicked();
 
 private:
     Ui::SettingsManager *ui;
-    QString dbName;
-    float damagePenalty;
-    float latePenalty;
-    QString lpenalty;
-    QString dpenalty;
-    QDate today;
-    QDate dueDate;
-    int daysDue;
-    void saveSettings(const QString &key, const QVariant &value, const QString &group);
-    QVariant loadSettings(const QString &key, const QVariant &defaultValue, const QString &group);
+    QString defDbName = "aklatan.db";
+    float defDamagePenalty = 150.0;
+    float defLatePenalty = 150.0;
+    int defDaysDue = 3;
+
 
 };
+
+void saveSettings(const QString &key, const QVariant &value, const QString &group);
+QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue);
+extern QString dbName;
+extern float damagePenalty;
+extern float latePenalty;
+extern QString lpenalty;
+extern QString dpenalty;
+extern QDate today;
+extern QDate dueDate;
+extern int daysDue;
 
 #endif // SETTINGSMANAGER_H
