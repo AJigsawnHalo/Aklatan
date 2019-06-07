@@ -640,3 +640,9 @@ void MainLibraryWindow::on_regClear_clicked()
         passRegisterUser();
     }
 }
+
+void MainLibraryWindow::on_actionPreferences_triggered()
+{
+    setMan.show();
+    setMan.loadConf();
+}

@@ -19,6 +19,7 @@ public:
     explicit SettingsManager(QWidget *parent = nullptr);
     ~SettingsManager();
     void setConf();
+    void loadConf();
 private slots:
 
 
@@ -26,12 +27,18 @@ private slots:
 
     void on_loadButton_clicked();
 
+    void on_cancelButton_clicked();
+
+    void on_applyButton_clicked();
+
 private:
     Ui::SettingsManager *ui;
     QString defDbName = "aklatan.db";
     float defDamagePenalty = 150.0;
     float defLatePenalty = 150.0;
     int defDaysDue = 3;
+    void saveConf();
+
 
 
 };
