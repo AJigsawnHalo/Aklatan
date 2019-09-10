@@ -56,9 +56,6 @@ I'm a begginer at both Qt and C++ and I'm still learning so the code might be a 
 ### Things being worked on.
 *   User-facing Windows
     * Login Window
-    * Search Window
-
-### Things to be done in the future
 *   Original LMS hardware support
 
 ## License
