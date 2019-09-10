@@ -646,3 +646,9 @@ void MainLibraryWindow::on_actionPreferences_triggered()
     setMan.show();
     setMan.loadConf();
 }
+
+void MainLibraryWindow::on_actionSearch_triggered()
+{
+	searchWin.show();
+	searchWin.loadWindow();
+}

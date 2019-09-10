@@ -1317,6 +1317,7 @@
     <addaction name="separator"/>
     <addaction name="menuBook_Report"/>
     <addaction name="actionPreferences"/>
+    <addaction name="actionSearch"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAttendance"/>
@@ -1371,6 +1372,11 @@
   <action name="actionIssued_Books">
    <property name="text">
     <string>Issued Books</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="text">
+    <string>Search...</string>
    </property>
   </action>
  </widget>

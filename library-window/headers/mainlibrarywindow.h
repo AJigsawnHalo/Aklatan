@@ -6,6 +6,7 @@
 #include <QSqlRecord>
 #include "common/headers/dbmanager.h"
 #include "common/settings/settingsmanager.h"
+#include "common/search/searchwindow.h"
 namespace Ui {
 class MainLibraryWindow;
 }
@@ -45,12 +46,13 @@ private slots:
     void on_regRegButton_clicked();
     void on_regClear_clicked();
 
-
+	void on_actionSearch_triggered();
     void on_actionPreferences_triggered();
 
 private:
     Ui::MainLibraryWindow *ui;
     SettingsManager setMan;
+	searchwindow searchWin;
 };
 
 #endif // MAINLIBRARYWINDOW_H
