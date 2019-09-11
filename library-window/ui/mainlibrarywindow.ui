@@ -1297,9 +1297,11 @@
    </widget>
    <widget class="QMenu" name="menuAttendance">
     <property name="title">
-     <string>Attendance</string>
+     <string>Users</string>
     </property>
     <addaction name="actionLog_Book"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_User_Window"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -1377,6 +1379,11 @@
   <action name="actionSearch">
    <property name="text">
     <string>Search...</string>
+   </property>
+  </action>
+  <action name="actionOpen_User_Window">
+   <property name="text">
+    <string>Open User Window...</string>
    </property>
   </action>
  </widget>
