@@ -22,7 +22,9 @@ SOURCES += \
     common/settings/settingsmanager.cpp \
     library-window/cpp/loginform.cpp \
     library-window/cpp/main.cpp \
-    library-window/cpp/mainlibrarywindow.cpp
+    library-window/cpp/mainlibrarywindow.cpp \
+    user-window/userlogin.cpp \
+    user-window/userwindow.cpp
 
 HEADERS += \
     common/headers/dbmanager.h \
@@ -30,13 +32,17 @@ HEADERS += \
     common/search/searchwindow.h \
     common/settings/settingsmanager.h \
     library-window/headers/loginform.h \
-    library-window/headers/mainlibrarywindow.h
+    library-window/headers/mainlibrarywindow.h \
+    user-window/userlogin.h \
+    user-window/userwindow.h
 
 FORMS += \
     common/search/searchwindow.ui \
     common/settings/settingsmanager.ui \
     library-window/ui/loginform.ui \
-    library-window/ui/mainlibrarywindow.ui
+    library-window/ui/mainlibrarywindow.ui \
+    user-window/userlogin.ui \
+    user-window/userwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

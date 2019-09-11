@@ -652,3 +652,10 @@ void MainLibraryWindow::on_actionSearch_triggered()
 	searchWin.show();
 	searchWin.loadWindow();
 }
+
+void MainLibraryWindow::on_actionOpen_User_Window_triggered()
+{
+	userWin.show();
+	this->hide();
+}
+

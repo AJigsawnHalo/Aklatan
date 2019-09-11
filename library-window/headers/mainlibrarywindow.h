@@ -7,6 +7,7 @@
 #include "common/headers/dbmanager.h"
 #include "common/settings/settingsmanager.h"
 #include "common/search/searchwindow.h"
+#include "user-window/userwindow.h"
 namespace Ui {
 class MainLibraryWindow;
 }
@@ -48,11 +49,13 @@ private slots:
 
 	void on_actionSearch_triggered();
     void on_actionPreferences_triggered();
+	void on_actionOpen_User_Window_triggered();
 
 private:
     Ui::MainLibraryWindow *ui;
     SettingsManager setMan;
 	searchwindow searchWin;
+	UserWindow userWin;
 };
 
 #endif // MAINLIBRARYWINDOW_H
