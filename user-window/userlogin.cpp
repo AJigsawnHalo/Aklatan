@@ -49,6 +49,7 @@ void UserLogin::loginFunc()
 	query.prepare(qry);
 	if (query.exec()){
 		QMessageBox::about(this, "Login", "Login Successful.");
+		ui->lineID->setText("");
 	}
 }
 
