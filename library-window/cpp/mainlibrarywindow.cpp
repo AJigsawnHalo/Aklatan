@@ -1,8 +1,5 @@
 #include "library-window/headers/mainlibrarywindow.h"
 #include "ui_mainlibrarywindow.h"
-#include "common/headers/dbmanager.h"
-#include "library-window/headers/loginform.h"
-#include "common/headers/globals.h"
 
 
 MainLibraryWindow::MainLibraryWindow(QWidget *parent) :
