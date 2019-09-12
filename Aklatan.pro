@@ -23,6 +23,7 @@ SOURCES += \
     library-window/cpp/loginform.cpp \
     library-window/cpp/main.cpp \
     library-window/cpp/mainlibrarywindow.cpp \
+    library-window/logbook.cpp \
     user-window/userlogin.cpp \
     user-window/userwindow.cpp
 
@@ -33,12 +34,14 @@ HEADERS += \
     common/settings/settingsmanager.h \
     library-window/headers/loginform.h \
     library-window/headers/mainlibrarywindow.h \
+    library-window/logbook.h \
     user-window/userlogin.h \
     user-window/userwindow.h
 
 FORMS += \
     common/search/searchwindow.ui \
     common/settings/settingsmanager.ui \
+    library-window/logbook.ui \
     library-window/ui/loginform.ui \
     library-window/ui/mainlibrarywindow.ui \
     user-window/userlogin.ui \

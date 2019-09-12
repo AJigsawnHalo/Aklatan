@@ -659,3 +659,8 @@ void MainLibraryWindow::on_actionOpen_User_Window_triggered()
 	this->hide();
 }
 
+void MainLibraryWindow::on_actionLog_Book_triggered()
+{
+	lB.show();
+	lB.loadWindow();
+}
