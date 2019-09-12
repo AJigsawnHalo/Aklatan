@@ -8,6 +8,8 @@
 #include "common/settings/settingsmanager.h"
 #include "common/search/searchwindow.h"
 #include "user-window/userwindow.h"
+#include "library-window/logbook.h"
+
 namespace Ui {
 class MainLibraryWindow;
 }
@@ -46,7 +48,7 @@ private slots:
     void on_spinQuantity_valueChanged(int arg1);
     void on_regRegButton_clicked();
     void on_regClear_clicked();
-
+	void on_actionLog_Book_triggered();
 	void on_actionSearch_triggered();
     void on_actionPreferences_triggered();
 	void on_actionOpen_User_Window_triggered();
@@ -56,6 +58,7 @@ private:
     SettingsManager setMan;
 	searchwindow searchWin;
 	UserWindow userWin;
+	LogBook lB;
 };
 
 #endif // MAINLIBRARYWINDOW_H
