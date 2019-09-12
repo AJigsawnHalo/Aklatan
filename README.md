@@ -29,7 +29,6 @@ These instructions are for how Aklatan is currently setup.
 
 ## Build
 ### Dependencies
-*  Git
 *  C++ compiler
 *  [Qt5](https://doc.qt.io/qt-5/index.html) (`qmake`)
 *  [Sqlite v3](https://www.sqlite.org/index.html) (Not needed in building. Only for normal operation)
@@ -54,8 +53,6 @@ If you would like to contribute, please go to the [Github repo](https://github.c
 I'm a begginer at both Qt and C++ and I'm still learning so the code might be a bit inefficient and messy some times. 
 
 ### Things being worked on.
-*   User-facing Windows
-    * Login Window
 *   Original LMS hardware support
 
 ## License
