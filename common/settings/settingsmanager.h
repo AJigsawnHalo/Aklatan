@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QDate>
 #include <tuple>
+#include <QMessageBox>
 using namespace std;
 
 namespace Ui {
@@ -34,8 +35,8 @@ private slots:
 private:
     Ui::SettingsManager *ui;
     QString defDbName = "aklatan.db";
-    float defDamagePenalty = 150.0;
-    float defLatePenalty = 150.0;
+    double defDamagePenalty = 150;
+    double defLatePenalty = 150;
     int defDaysDue = 3;
     void saveConf();
 
@@ -46,8 +47,8 @@ private:
 void saveSettings(const QString &key, const QVariant &value, const QString &group);
 QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue);
 extern QString dbName;
-extern float damagePenalty;
-extern float latePenalty;
+extern double damagePenalty;
+extern double latePenalty;
 extern QString lpenalty;
 extern QString dpenalty;
 extern QDate today;
