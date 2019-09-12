@@ -1,7 +1,6 @@
 #include "settingsmanager.h"
 #include "ui_settingsmanager.h"
 
-#include "common/headers/globals.h"
 #include <QtDebug>
 #define keyDB "DatabaseName"
 #define keyDamage "DamagePenalty"
@@ -23,8 +22,8 @@ SettingsManager::~SettingsManager()
 }
 
 QString dbName = "";
-float damagePenalty = 0;
-float latePenalty = 0;
+double damagePenalty = 0;
+double latePenalty = 0;
 QString lpenalty;
 QString dpenalty;
 QDate today = QDate::currentDate();
@@ -81,8 +80,8 @@ void SettingsManager::setConf()
     }
 
     dbName = conf[0] + ".db";
-    damagePenalty = conf[1].toFloat();
-    latePenalty = conf[2].toFloat();
+    damagePenalty = conf[1].toDouble();
+    latePenalty = conf[2].toDouble();
     daysDue = conf[3].toInt();
 }
 

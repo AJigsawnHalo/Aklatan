@@ -1,5 +1,4 @@
 #include "library-window/headers/loginform.h"
-#include "common/headers/dbmanager.h"
 #include "common/settings/settingsmanager.h"
 #include <QApplication>
 

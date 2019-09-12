@@ -1,5 +1,4 @@
 #include "common/headers/dbmanager.h"
-#include "common/headers/globals.h"
 
 dbManager::dbManager(QWidget *parent) : QMainWindow(parent)
 {
