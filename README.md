@@ -16,9 +16,12 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 *   Make it easier to setup for multiple computers.
 
 ## Dependencies
-*  C++ compiler
-*  [Qt5](https://doc.qt.io/qt-5/index.html) (`qmake`). Needs version 5.12 and up.
-*  [Sqlite v3](https://www.sqlite.org/index.html) (Not needed in building. Only for normal operation)
+*  [Qt5](https://doc.qt.io/qt-5/index.html). Needs version 5.12 and up.
+*  [Sqlite v3](https://www.sqlite.org/index.html)
+### Build Dependencies
+* C++ compiler
+* qmake (version 5.12 and up)
+   * For debian/ubuntu-based distributions, Qt5  can be installed by `sudo apt install qt5-default`.
 
 ## Install
 1. Download the binary file from the [releases page](https://github.com/AJigsawnHalo/Aklatan/releases) with everything included or you can build it yourself.
