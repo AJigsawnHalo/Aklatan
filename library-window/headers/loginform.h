@@ -17,6 +17,7 @@ class LoginForm : public QDialog
 public:
     LoginForm(QWidget *parent = nullptr);
     ~LoginForm();
+	void dbCheck();
 
 private slots:
     void on_pushButton_clicked();

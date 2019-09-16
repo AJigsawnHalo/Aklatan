@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 		setMan.setConf();
 		LoginForm w;
 		w.show();
+		w.dbCheck();
 		return a.exec();
 	}
 }

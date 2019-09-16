@@ -10,6 +10,16 @@ LoginForm::LoginForm(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Aklatan - Login");
 
+
+}
+
+LoginForm::~LoginForm()
+{
+    delete ui;
+}
+
+void LoginForm::dbCheck()
+{
     //Check for database connection
     if (!db.connOpen() == true){
         ui->labelStatus->setText("Failed to connect to Database.");
@@ -19,14 +29,7 @@ LoginForm::LoginForm(QWidget *parent)
         ui->labelStatus->setText("Database Connected.");
     }
 
-
 }
-
-LoginForm::~LoginForm()
-{
-    delete ui;
-}
-
 
 void LoginForm::on_pushButton_clicked()
 {
