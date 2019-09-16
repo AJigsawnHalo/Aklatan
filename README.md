@@ -16,13 +16,9 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 *   Make it easier to setup for multiple computers.
 
 ## Install
-These instructions are for how Aklatan is currently setup. 
 1. Download the binary file from the [releases page](https://github.com/AJigsawnHalo/Aklatan/releases) with everything included or you can build it yourself.
 
-2. For Aklatan to work, you would need to have a sqlite database named `aklatan.db` located in `~/.local/share`. This would be changed in the future to allow you to setup a database yourself.
-   *  There's a pre-made database included in the release. Just copy the `aklatan.db` file to your `~/.local/share` folder.
-
-3. Run the program using the following.
+2. Run the program using the following.
    *  Open a terminal and go to the folder where the Aklatan binary is located.
    *  Run using `./Aklatan`.
 
