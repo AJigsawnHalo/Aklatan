@@ -15,6 +15,11 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 *   Change the database backend to SQLite.
 *   Make it easier to setup for multiple computers.
 
+## Dependencies
+*  C++ compiler
+*  [Qt5](https://doc.qt.io/qt-5/index.html) (`qmake`). Needs version 5.12 and up.
+*  [Sqlite v3](https://www.sqlite.org/index.html) (Not needed in building. Only for normal operation)
+
 ## Install
 1. Download the binary file from the [releases page](https://github.com/AJigsawnHalo/Aklatan/releases) with everything included or you can build it yourself.
 
@@ -24,11 +29,6 @@ It tracks books and users using RFID tags and barcodes. This project aims to rew
 
 
 ## Build
-### Dependencies
-*  C++ compiler
-*  [Qt5](https://doc.qt.io/qt-5/index.html) (`qmake`)
-*  [Sqlite v3](https://www.sqlite.org/index.html) (Not needed in building. Only for normal operation)
-
 ### Building in Linux
 1. Clone this repo and go to the `Aklatan` directory.
 ```
