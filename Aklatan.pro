@@ -19,6 +19,7 @@ SOURCES += \
     common/cpp/dbmanager.cpp \
     common/search/searchwindow.cpp \
     common/settings/settingsmanager.cpp \
+    common/setup/setupmanager.cpp \
     library-window/cpp/loginform.cpp \
     library-window/cpp/main.cpp \
     library-window/cpp/mainlibrarywindow.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     common/headers/dbmanager.h \
     common/search/searchwindow.h \
     common/settings/settingsmanager.h \
+    common/setup/setupmanager.h \
     library-window/headers/loginform.h \
     library-window/headers/mainlibrarywindow.h \
     library-window/logbook.h \
@@ -39,6 +41,7 @@ HEADERS += \
 FORMS += \
     common/search/searchwindow.ui \
     common/settings/settingsmanager.ui \
+    common/setup/setupmanager.ui \
     library-window/logbook.ui \
     library-window/ui/loginform.ui \
     library-window/ui/mainlibrarywindow.ui \

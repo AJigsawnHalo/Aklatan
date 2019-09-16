@@ -30,7 +30,7 @@ QDate today = QDate::currentDate();
 int daysDue = 0;
 QDate dueDate = today.addDays(daysDue);
 
-void saveSettings(const QString &key, const QVariant &value, const QString &group)
+void SettingsManager::saveSettings(const QString &key, const QVariant &value, const QString &group)
 {
     QSettings settings;
     settings.beginGroup(group);
@@ -39,7 +39,7 @@ void saveSettings(const QString &key, const QVariant &value, const QString &grou
 }
 
 
-QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue = QVariant())
+QVariant SettingsManager::loadSettings(const QString &key, const QString &group, const QVariant &defaultValue = QVariant())
 {
     QSettings settings;
     settings.beginGroup(group);
