@@ -21,6 +21,8 @@ public:
     ~SettingsManager();
     void setConf();
     void loadConf();
+	void saveSettings(const QString &key, const QVariant &value, const QString &group);
+	QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue);
 private slots:
 
 
@@ -44,8 +46,6 @@ private:
 
 };
 
-void saveSettings(const QString &key, const QVariant &value, const QString &group);
-QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue);
 extern QString dbName;
 extern double damagePenalty;
 extern double latePenalty;
