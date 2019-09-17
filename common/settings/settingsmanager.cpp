@@ -32,7 +32,7 @@ QDate dueDate = today.addDays(daysDue);
 
 void SettingsManager::saveSettings(const QString &key, const QVariant &value, const QString &group)
 {
-    QSettings settings;
+    QSettings settings(QSettings::IniFormat,QSettings::UserScope,"Aklatan-project","Aklatan");
     settings.beginGroup(group);
     settings.setValue(key, value);
     settings.endGroup();
@@ -41,7 +41,7 @@ void SettingsManager::saveSettings(const QString &key, const QVariant &value, co
 
 QVariant SettingsManager::loadSettings(const QString &key, const QString &group, const QVariant &defaultValue = QVariant())
 {
-    QSettings settings;
+    QSettings settings(QSettings::IniFormat,QSettings::UserScope,"Aklatan-project","Aklatan");
     settings.beginGroup(group);
     QVariant value = settings.value(key, defaultValue);
     settings.endGroup();
