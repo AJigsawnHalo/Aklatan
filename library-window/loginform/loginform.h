@@ -3,8 +3,8 @@
 
 #include <QDialog>
 #include <QtSql>
-#include "library-window/headers/mainlibrarywindow.h"
-#include "common/headers/dbmanager.h"
+#include "library-window/mainlibrarywindow/mainlibrarywindow.h"
+#include "common/dbmanager/dbmanager.h"
 #include "common/settings/settingsmanager.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginForm; }

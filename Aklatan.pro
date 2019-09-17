@@ -16,37 +16,37 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    common/cpp/dbmanager.cpp \
+    common/dbmanager/dbmanager.cpp \
     common/search/searchwindow.cpp \
     common/settings/settingsmanager.cpp \
     common/setup/setupmanager.cpp \
-    library-window/cpp/loginform.cpp \
-    library-window/cpp/main.cpp \
-    library-window/cpp/mainlibrarywindow.cpp \
-    library-window/logbook.cpp \
-    user-window/userlogin.cpp \
-    user-window/userwindow.cpp
+    library-window/logbook/logbook.cpp \
+    library-window/loginform/loginform.cpp \
+    library-window/mainlibrarywindow/mainlibrarywindow.cpp \
+    main.cpp \
+    user-window/userlogin/userlogin.cpp \
+    user-window/userwindow/userwindow.cpp
 
 HEADERS += \
-    common/headers/dbmanager.h \
+    common/dbmanager/dbmanager.h \
     common/search/searchwindow.h \
     common/settings/settingsmanager.h \
     common/setup/setupmanager.h \
-    library-window/headers/loginform.h \
-    library-window/headers/mainlibrarywindow.h \
-    library-window/logbook.h \
-    user-window/userlogin.h \
-    user-window/userwindow.h
+    library-window/logbook/logbook.h \
+    library-window/loginform/loginform.h \
+    library-window/mainlibrarywindow/mainlibrarywindow.h \
+    user-window/userlogin/userlogin.h \
+    user-window/userwindow/userwindow.h
 
 FORMS += \
     common/search/searchwindow.ui \
     common/settings/settingsmanager.ui \
     common/setup/setupmanager.ui \
-    library-window/logbook.ui \
-    library-window/ui/loginform.ui \
-    library-window/ui/mainlibrarywindow.ui \
-    user-window/userlogin.ui \
-    user-window/userwindow.ui
+    library-window/logbook/logbook.ui \
+    library-window/loginform/loginform.ui \
+    library-window/mainlibrarywindow/mainlibrarywindow.ui \
+    user-window/userlogin/userlogin.ui \
+    user-window/userwindow/userwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

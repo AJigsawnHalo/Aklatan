@@ -1,4 +1,4 @@
-#include "common/headers/dbmanager.h"
+#include "common/dbmanager/dbmanager.h"
 
 dbManager::dbManager(QWidget *parent) : QMainWindow(parent)
 {
