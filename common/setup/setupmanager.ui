@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedSetup">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="StartPage">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -94,6 +94,9 @@
            <property name="text">
             <string>Next</string>
            </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
@@ -124,7 +127,7 @@
        <item row="2" column="0">
         <widget class="QStackedWidget" name="stackedDB">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="dbPage1">
           <layout class="QGridLayout" name="gridLayout_4">
@@ -174,6 +177,9 @@
               <widget class="QPushButton" name="buttonNextdb1">
                <property name="text">
                 <string>Next</string>
+               </property>
+               <property name="default">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -267,6 +273,9 @@
               <widget class="QPushButton" name="buttonNextdb2">
                <property name="text">
                 <string>Next</string>
+               </property>
+               <property name="default">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -456,6 +465,9 @@
            <property name="text">
             <string>Next</string>
            </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
@@ -501,6 +513,9 @@
         <widget class="QPushButton" name="buttonFinish">
          <property name="text">
           <string>Finish</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -562,6 +577,27 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>buttonNext0</tabstop>
+  <tabstop>buttonCancel0</tabstop>
+  <tabstop>lineUsername</tabstop>
+  <tabstop>linePassword</tabstop>
+  <tabstop>linePassCheck</tabstop>
+  <tabstop>buttonNextdb2</tabstop>
+  <tabstop>buttonBackdb2</tabstop>
+  <tabstop>buttonCanceldb2</tabstop>
+  <tabstop>linedbName</tabstop>
+  <tabstop>buttonNextdb1</tabstop>
+  <tabstop>buttonBackdb1</tabstop>
+  <tabstop>buttonCanceldb1</tabstop>
+  <tabstop>lineDue</tabstop>
+  <tabstop>lineLate</tabstop>
+  <tabstop>lineDamaged</tabstop>
+  <tabstop>buttonNextSettings</tabstop>
+  <tabstop>buttonBackSettings</tabstop>
+  <tabstop>buttonCancelSettings</tabstop>
+  <tabstop>buttonFinish</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
