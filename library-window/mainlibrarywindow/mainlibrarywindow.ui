@@ -1314,12 +1314,12 @@
      <addaction name="actionAll_Books"/>
      <addaction name="actionIssued_Books"/>
     </widget>
+    <addaction name="actionSearch"/>
     <addaction name="actionAdd_Book"/>
     <addaction name="actionAdd_User"/>
     <addaction name="separator"/>
     <addaction name="menuBook_Report"/>
     <addaction name="actionPreferences"/>
-    <addaction name="actionSearch"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAttendance"/>
