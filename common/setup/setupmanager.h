@@ -4,8 +4,8 @@
 #include <QWidget>
 #include <QSqlQuery>
 #include <QMessageBox>
-#include "library-window/headers/loginform.h"
-#include "common/headers/dbmanager.h"
+#include "library-window/loginform/loginform.h"
+#include "common/dbmanager/dbmanager.h"
 #include "common/settings/settingsmanager.h"
 
 namespace Ui {

@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include "common/search/searchwindow.h"
-#include "user-window/userlogin.h"
+#include "user-window/userlogin/userlogin.h"
 
 namespace Ui {
 class UserWindow;

@@ -4,11 +4,11 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QSqlRecord>
-#include "common/headers/dbmanager.h"
+#include "common/dbmanager/dbmanager.h"
 #include "common/settings/settingsmanager.h"
 #include "common/search/searchwindow.h"
-#include "user-window/userwindow.h"
-#include "library-window/logbook.h"
+#include "user-window/userwindow/userwindow.h"
+#include "library-window/logbook/logbook.h"
 
 namespace Ui {
 class MainLibraryWindow;

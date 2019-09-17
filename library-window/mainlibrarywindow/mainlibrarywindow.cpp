@@ -1,4 +1,4 @@
-#include "library-window/headers/mainlibrarywindow.h"
+#include "library-window/mainlibrarywindow/mainlibrarywindow.h"
 #include "ui_mainlibrarywindow.h"
 
 

@@ -1,4 +1,4 @@
-#include "library-window/headers/loginform.h"
+#include "library-window/loginform/loginform.h"
 #include "common/settings/settingsmanager.h"
 #include "common/setup/setupmanager.h"
 #include <QApplication>
