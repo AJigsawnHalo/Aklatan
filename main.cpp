@@ -9,14 +9,19 @@ int main(int argc, char *argv[])
     a.setApplicationName("Aklatan");
     a.setOrganizationName("Aklatan-project");
     a.setOrganizationDomain("https://github.com/ajigsawnhalo/aklatan");
+    // Read from the .ini file for a setting called FirstRun
+    // This also returns a default value of 'true' if there is no .ini file found
     SettingsManager setMan;
 	QString firstrun = setMan.loadSettings("FirstRun", "Settings", "true").toString(); 
 	qDebug() << firstrun;
+
+    // If the value returned is true, run the setup
 	if (firstrun == "true"){
 		SetupManager setup;
 		setup.show();	
 		return a.exec();
 	}
+    // Else, run the admin login
 	else {
 		setMan.setConf();
 		LoginForm w;

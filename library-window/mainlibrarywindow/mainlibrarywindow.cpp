@@ -45,24 +45,29 @@ MainLibraryWindow::~MainLibraryWindow()
     delete ui;
 }
 
+// Provides a status screen on the home screen
 void MainLibraryWindow::loadStatus()
 {
     QSqlQuery stat,dam,all;
     QString iss,dama,total;
     int rIss,rDam,rAll;
 
+    // Show the number of issued books
     stat.exec("select * from issued");
     stat.last();
     rIss = stat.at() + 1;
     iss = QString::number(rIss);
     ui->labelIssued->setText(iss + " Books Currently Issued");
 
+    // Show the total number of books
     all.exec("select * from books");
     all.last();
     rAll = all.at() + 1;
     total = QString::number(rAll);
     ui->labelAll->setText("There are "+total+" books in the Library");
 
+    // Show the number of damaged books
+    // NOTE: Might remove in the future for something more useful
     dam.exec("select * from damagedBooks");
     dam.last();
     rDam = dam.at() + 1;
@@ -627,6 +632,7 @@ void MainLibraryWindow::on_regRegButton_clicked()
     }
 }
 
+// Clears the register window
 void MainLibraryWindow::on_regClear_clicked()
 {
     int arg = ui->tabWidAdd->currentIndex();
@@ -638,24 +644,28 @@ void MainLibraryWindow::on_regClear_clicked()
     }
 }
 
+// Open the settings window
 void MainLibraryWindow::on_actionPreferences_triggered()
 {
     setMan.show();
     setMan.loadConf();
 }
 
+// Open the search window
 void MainLibraryWindow::on_actionSearch_triggered()
 {
 	searchWin.show();
 	searchWin.loadWindow();
 }
 
+// Open the user window
 void MainLibraryWindow::on_actionOpen_User_Window_triggered()
 {
 	userWin.show();
 	this->hide();
 }
 
+// Open the logbook window
 void MainLibraryWindow::on_actionLog_Book_triggered()
 {
 	lB.show();

@@ -6,6 +6,7 @@ searchwindow::searchwindow(QWidget *parent) :
     ui(new Ui::searchwindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Search");
 	loadWindow();
 }
 
@@ -14,6 +15,7 @@ searchwindow::~searchwindow()
     delete ui;
 }
 
+// Initialize the search window
 void searchwindow::loadWindow()
 {
 	QSqlQueryModel * model = new QSqlQueryModel;
@@ -22,11 +24,16 @@ void searchwindow::loadWindow()
 	ui->tableSearch->setModel(model);
 }
 
+// Main search function
 void searchwindow::searchFunc()
 {
 	QSqlQuery query;
 	QSqlQueryModel * model = new QSqlQueryModel;
+
+    // Sets the search terms for the query
 	QString searchQ = ui->lineSearch->text();
+
+    // Sets the search parameters selected by the user
 	QString searchParam;
 	int i = ui->comboBox->currentIndex();
 	switch (i){
@@ -47,10 +54,10 @@ void searchwindow::searchFunc()
 			break;
 	}
 
-	if (searchQ == "Type search here..."){
+    if (searchQ == "Type search here..."){ // checks if the search bar still has the default text
 		QMessageBox::about(this, "", "Please enter a search query");
 	}
-	else{ query.prepare("SELECT * FROM BOOKS WHERE " + searchParam + " LIKE '" + searchQ + "%'");
+    else{ query.prepare("SELECT * FROM BOOKS WHERE " + searchParam + " LIKE '" + searchQ + "%'"); // query the database for the search term using the search parameters
 		if (query.exec()){
 			int rowNumber = 0;
 			if (query.last()){

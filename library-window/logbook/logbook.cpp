@@ -6,6 +6,7 @@ LogBook::LogBook(QWidget *parent) :
     ui(new Ui::LogBook)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Logbook");
 }
 
 LogBook::~LogBook()
@@ -13,6 +14,7 @@ LogBook::~LogBook()
     delete ui;
 }
 
+// load the logbook for the current date
 void LogBook::loadWindow()
 {
 	QDate today = QDate::currentDate();
@@ -22,6 +24,7 @@ void LogBook::loadWindow()
 	loadLogBook();
 }
 
+// load the log for the selected date
 void LogBook::loadLogBook()
 {
 	QString date = ui->dateEdit->text();
@@ -31,6 +34,7 @@ void LogBook::loadLogBook()
 	query.exec();
 
 	if (query.exec()){
+        // Check if there are logs for the given date
 		int rowNumber = 0;
 		if (query.last()){
 			rowNumber = query.at() + 1;

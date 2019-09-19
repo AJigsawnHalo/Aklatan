@@ -6,6 +6,7 @@ UserLogin::UserLogin(QWidget *parent) :
     ui(new Ui::UserLogin)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Login");
 }
 
 UserLogin::~UserLogin()
@@ -27,23 +28,29 @@ void UserLogin::loadUserLogWin()
 }
 
 // Logs the user in using the ID and the current time
-// This will change when the RFID login is implemented in the future.
+// NOTE: This will change when the RFID login is implemented in the future.
 void UserLogin::on_buttonLogin_clicked()
 {
 	loginFunc();
 }
 
+// Main login function
+// NOTE: Might add a logout function in the near future
 void UserLogin::loginFunc()
 {
+    // Get the current date and time
 	QDateTime dateTime = QDateTime::currentDateTime();
 	QString date = dateTime.toString("dd-MM-yy");
 	QString time = dateTime.toString("HH:mm");
 	QString userID = ui->lineID->text();
 	QString name = ui->lineName->text();
+
 	QSqlQuery query,slct;
+    // This query just returns the value of which type the user is for use in the next query
 	slct.prepare("SELECT * FROM users WHERE UserID='" + userID +"'");
 	slct.exec();
 	QString type = slct.value(4).toString();
+    // This query writes the log into the database
     QString qry = "insert into logbook (ID,Name,Time,Date,Type,Action) values ('"+userID+"', '"+name+"', '"+time+"', '"+date+"', '"+type+"', 'Login')";
 	qDebug() << qry;
 	query.prepare(qry);
@@ -53,6 +60,8 @@ void UserLogin::loginFunc()
 	}
 }
 
+// Checks the input for a matching user ID.
+// NOTE: Potentially dangerous as any user can find out the ID of another user
 void UserLogin::on_lineID_textChanged(const QString &arg1)
 {
 	QString ID = arg1;
