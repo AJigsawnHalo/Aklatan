@@ -6,6 +6,7 @@ UserLogin::UserLogin(QWidget *parent) :
     ui(new Ui::UserLogin)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Login");
 }
 
 UserLogin::~UserLogin()

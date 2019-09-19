@@ -13,6 +13,7 @@ SettingsManager::SettingsManager(QWidget *parent) :
     ui(new Ui::SettingsManager)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Preferences");
     loadConf();
 }
 

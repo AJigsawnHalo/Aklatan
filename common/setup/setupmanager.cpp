@@ -126,6 +126,7 @@ void SetupManager::on_buttonNextdb2_clicked()
         QMessageBox::about(this, "Password Error", "Passwords do not match.");
 		ui->linePassword->setText("");
 		ui->linePassCheck->setText("");
+        this->setWindowTitle("Aklatan - Settings Setup");
 	}
 }
 
@@ -166,6 +167,7 @@ void SetupManager::on_buttonNextSettings_clicked()
        setMan.saveSettings(keyPass, confPass, group);
 	}
 	ui->stackedSetup->setCurrentIndex(3);
+    this->setWindowTitle("Aklatan - Setup Finished");
 }
 
 void SetupManager::on_buttonFinish_clicked()

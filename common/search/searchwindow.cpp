@@ -6,6 +6,7 @@ searchwindow::searchwindow(QWidget *parent) :
     ui(new Ui::searchwindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Search");
 	loadWindow();
 }
 

@@ -6,6 +6,7 @@ UserWindow::UserWindow(QWidget *parent) :
     ui(new Ui::UserWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - User Home");
 }
 
 UserWindow::~UserWindow()

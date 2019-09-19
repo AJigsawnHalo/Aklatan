@@ -6,6 +6,7 @@ LogBook::LogBook(QWidget *parent) :
     ui(new Ui::LogBook)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Aklatan - Logbook");
 }
 
 LogBook::~LogBook()
