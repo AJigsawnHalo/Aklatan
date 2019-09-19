@@ -14,7 +14,8 @@ SetupManager::~SetupManager()
     delete ui;
 }
 
-// Start Page
+// ###Start Page###
+
 void SetupManager::on_buttonCancel0_clicked()
 {
     QMessageBox::StandardButton reply;
@@ -26,6 +27,7 @@ void SetupManager::on_buttonCancel0_clicked()
       }
 }
 
+// Go to the Database setup
 void SetupManager::on_buttonNext0_clicked()
 {
 	this->setWindowTitle("Aklatan - Database Setup");
@@ -33,7 +35,8 @@ void SetupManager::on_buttonNext0_clicked()
 	ui->stackedDB->setCurrentIndex(0);
 }
 
-// Database Setup
+// ###Database Setup###
+
 void SetupManager::on_buttonBackdb1_clicked()
 {
 	this->setWindowTitle("Aklatan - Setup");
@@ -43,8 +46,8 @@ void SetupManager::on_buttonBackdb1_clicked()
 void SetupManager::on_buttonNextdb1_clicked()
 {
 	QString dbName = ui->linedbName->text();
-	setMan.saveSettings("DatabaseName", dbName, "Settings");
-	createDB();
+    setMan.saveSettings("DatabaseName", dbName, "Settings"); // write the database name into the .ini file
+    createDB(); // invokes the createDB function to create the database using the database name
 	ui->stackedDB->setCurrentIndex(1);
 }
 
@@ -77,12 +80,15 @@ void SetupManager::on_buttonBackdb2_clicked()
 	ui->stackedDB->setCurrentIndex(0);
 }
 
+// creates the database
 void SetupManager::createDB()
 {
+    // Read from the newly created .ini file for the database name
 	setMan.loadConf();
 	setMan.setConf();
 	dbMan.connOpen();
 
+    // Initialize the database
 	QSqlQuery admin,books,category,damagedbooks,issued,logbook,users;	
 	admin.prepare("CREATE TABLE 'admin' ( 'user-id' INTEGER, 'username' TEXT, 'password' BLOB, PRIMARY KEY('user-id') )");
 	books.prepare( "CREATE TABLE 'books' ( 'BookID' INTEGER, 'BookName' BLOB, 'Category' BLOB, 'Author' BLOB, 'Publisher' BLOB, 'Edition' INTEGER, 'PublishingYear' INTEGER, 'Quantity' INTEGER, 'Status' TEXT, PRIMARY KEY('BookID') )");
@@ -91,6 +97,7 @@ void SetupManager::createDB()
 	issued.prepare("CREATE TABLE 'issued' ( 'BookID' INTEGER, 'BookName' BLOB, 'UserID' INTEGER, 'UserName' BLOB, 'UserType' BLOB, 'DateIssued' BLOB, 'DateDue' BLOB, 'TransactionNum' INTEGER, PRIMARY KEY('TransactionNum') )");
 	logbook.prepare("CREATE TABLE `logbook` ( `ID` INTEGER, `Name` BLOB, `Time` BLOB, `Date` BLOB, `Type` TEXT, `Action` TEXT )");
 	users.prepare("CREATE TABLE 'users' ( 'UserID' INTEGER, 'UserName' BLOB, 'UserAddress' BLOB, 'UserContactNumber' BLOB, 'UserType' BLOB )");
+
 	admin.exec();
 	books.exec();
 	category.exec();
@@ -100,6 +107,7 @@ void SetupManager::createDB()
 	users.exec();
 }
 
+// Creates the admin account
 void SetupManager::on_buttonNextdb2_clicked()
 {
 	QString uName,pass,passCheck;
@@ -121,6 +129,8 @@ void SetupManager::on_buttonNextdb2_clicked()
 	}
 }
 
+// ### Settings Page###
+
 void SetupManager::on_buttonCancelSettings_clicked()
 {
     QMessageBox::StandardButton reply;
@@ -137,6 +147,7 @@ void SetupManager::on_buttonBackSettings_clicked()
 	ui->stackedSetup->setCurrentIndex(1);
 }
 
+// Writes the given values into the .ini file
 void SetupManager::on_buttonNextSettings_clicked()
 {
 	QString due,late,damaged;
@@ -159,8 +170,12 @@ void SetupManager::on_buttonNextSettings_clicked()
 
 void SetupManager::on_buttonFinish_clicked()
 {
-	setMan.saveSettings("FirstRun", "False", "Settings");
+    // Writes a value of false for FirstRun indicating the setup function has been completed
+    setMan.saveSettings("FirstRun", "False", "Settings");
+
 	this->hide();
+
+    // Load the admin login window
 	setMan.loadConf();
 	setMan.setConf();
 	dbMan.connClose();

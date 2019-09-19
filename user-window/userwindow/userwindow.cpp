@@ -13,12 +13,15 @@ UserWindow::~UserWindow()
     delete ui;
 }
 
+// Open the search window
 void UserWindow::on_buttonSearch_clicked()
 {
 	searchWin.show();
 	searchWin.loadWindow();
 }
 
+// Exits the User Window
+// NOTE: Add a way to open the Admin Window from the User Window
 void UserWindow::on_actionExit_triggered()
 {
     QMessageBox::StandardButton reply;
@@ -28,6 +31,7 @@ void UserWindow::on_actionExit_triggered()
 		}
 }
 
+// Open the User Login window
 void UserWindow::on_buttonLogin_clicked()
 {
 	uLog.show();

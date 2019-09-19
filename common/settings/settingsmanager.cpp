@@ -21,6 +21,7 @@ SettingsManager::~SettingsManager()
     delete ui;
 }
 
+// Set variables
 QString dbName = "";
 double damagePenalty = 0;
 double latePenalty = 0;
@@ -32,18 +33,20 @@ QDate dueDate = today.addDays(daysDue);
 
 void SettingsManager::saveSettings(const QString &key, const QVariant &value, const QString &group)
 {
+    // Initialize the settings object
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,"Aklatan-project","Aklatan");
     settings.beginGroup(group);
-    settings.setValue(key, value);
+    settings.setValue(key, value); // Write the value into the .ini file
     settings.endGroup();
 }
 
 
 QVariant SettingsManager::loadSettings(const QString &key, const QString &group, const QVariant &defaultValue = QVariant())
 {
+    // Initialize the settings object
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,"Aklatan-project","Aklatan");
     settings.beginGroup(group);
-    QVariant value = settings.value(key, defaultValue);
+    QVariant value = settings.value(key, defaultValue); // Read value from the ini file
     settings.endGroup();
     return value;
 }
@@ -62,14 +65,20 @@ void SettingsManager::on_loadButton_clicked()
 {
     loadConf();
 }
+
+// Set the external values to be used in other classes
 void SettingsManager::setConf()
 {
     QString dbNameNew, damNew, lateNew, dueNew, value;
 
+    // Read from the .ini file
+    // NOTE: Separate this into a different function
     QString group = "Settings";
-    QString key[4] = {keyDB,keyDamage,keyLate,keyDue};
-    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew};
+    QString key[4] = {keyDB,keyDamage,keyLate,keyDue}; // set the keys
+    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew}; // initialize array to store the values
+    // Initialize array to store default values if the key returns nothing
     QString def[4] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue)};
+    // Get the values
     for (int i = 0; i < 4; i++){
        QString keyPass, defPass, confPass;
        keyPass = key[i];
@@ -79,12 +88,14 @@ void SettingsManager::setConf()
 
     }
 
+    // Set the values
     dbName = conf[0] + ".db";
     damagePenalty = conf[1].toDouble();
     latePenalty = conf[2].toDouble();
     daysDue = conf[3].toInt();
 }
 
+// Loads the values into the settings window
 void SettingsManager::loadConf()
 {
     QString dbNameNew, damNew, lateNew, dueNew, value;
@@ -101,6 +112,7 @@ void SettingsManager::loadConf()
        conf[i] = value;
 
     }
+    // Set the value into the window
      ui->lineDbName->setText(conf[0]);
      ui->linedamagePenalty->setText(conf[1]);
      ui->lineLatePenalty->setText(conf[2]);
@@ -124,6 +136,8 @@ void SettingsManager::on_applyButton_clicked()
     saveConf();
     setConf();
 }
+
+// Saves the values from the settings window
 void SettingsManager::saveConf()
 {
     QString dbNameNew, damNew, lateNew, dueNew;

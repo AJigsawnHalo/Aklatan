@@ -40,14 +40,6 @@ void LoginForm::on_pushButton_clicked()
     username = ui->line_Username->text();
     password = ui->line_Password->text();
 
-    //Check for database connection again.
-    /*if(!db.connOpen()) {
-        qDebug() << "Failed to open the database";
-        return;
-    }*/
-
-    //db.connOpen(); //open the database
-
     QSqlQuery query; //initialize the query
     query.prepare("select * from admin where username='"+username +"' and password='"+password+"'"); //get the username and password from the database
 
@@ -59,7 +51,6 @@ void LoginForm::on_pushButton_clicked()
 
         if(count == 1){
             //open the Main Library Window if there's a matching username and password then close the Login window.
-
             lib.show();
             lib.loadStatus();
             this->hide();
