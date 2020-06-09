@@ -34,6 +34,8 @@ private slots:
 
     void on_applyButton_clicked();
 
+    void on_checkBox_toggled(bool checked);
+
 private:
     Ui::SettingsManager *ui;
     QString defDbName = "aklatan.db";

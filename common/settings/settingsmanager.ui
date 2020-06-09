@@ -40,10 +40,20 @@
        <string/>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="linedamagePenalty"/>
+       </item>
        <item row="0" column="2">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>.db</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Damage Penalty:</string>
          </property>
         </widget>
        </item>
@@ -54,16 +64,6 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="linedamagePenalty"/>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Late Penalty:</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
@@ -71,23 +71,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineDaysDue"/>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineLatePenalty"/>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Damage Penalty:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineDbName"/>
-       </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -99,6 +83,32 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineDbName"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineDaysDue"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineLatePenalty"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Late Penalty:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>Open User Window as default</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -162,7 +172,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

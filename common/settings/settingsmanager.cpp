@@ -31,6 +31,7 @@ QString dpenalty;
 QDate today = QDate::currentDate();
 int daysDue = 0;
 QDate dueDate = today.addDays(daysDue);
+QString defFirstWin = "False";
 
 void SettingsManager::saveSettings(const QString &key, const QVariant &value, const QString &group)
 {
@@ -99,13 +100,13 @@ void SettingsManager::setConf()
 // Loads the values into the settings window
 void SettingsManager::loadConf()
 {
-    QString dbNameNew, damNew, lateNew, dueNew, value;
+    QString dbNameNew, damNew, lateNew, dueNew, value, firstWin;
 
     QString group = "Settings";
-    QString key[4] = {keyDB,keyDamage,keyLate,keyDue};
-    QString conf[4] = {dbNameNew,damNew,lateNew,dueNew};
-    QString def[4] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue)};
-    for (int i = 0; i < 4; i++){
+    QString key[5] = {keyDB,keyDamage,keyLate,keyDue,"FirstRun"};
+    QString conf[5] = {dbNameNew,damNew,lateNew,dueNew,firstWin};
+    QString def[5] = {defDbName,QString::number(defDamagePenalty),QString::number(defLatePenalty),QString::number(defDaysDue),defFirstWin};
+    for (int i = 0; i < 5; i++){
        QString keyPass, defPass, confPass;
        keyPass = key[i];
        defPass = def[i];
@@ -118,6 +119,12 @@ void SettingsManager::loadConf()
      ui->linedamagePenalty->setText(conf[1]);
      ui->lineLatePenalty->setText(conf[2]);
      ui->lineDaysDue->setText(conf[3]);
+     if (conf[4] == "False"){
+         ui->checkBox->setChecked(false);
+     }
+     else if (conf[4] == "User"){
+         ui->checkBox->setChecked(true);
+     }
 }
 
 
@@ -159,5 +166,15 @@ void SettingsManager::saveConf()
        confPass = conf[i];
        defPass = def[i];
        saveSettings(keyPass, confPass, group);
+    }
+}
+
+void SettingsManager::on_checkBox_toggled(bool checked)
+{
+    if (checked == true){
+        saveSettings("FirstRun", "User", "Settings");
+    }
+    else if (checked == false){
+        saveSettings("FirstRun", "False", "Settings");
     }
 }
