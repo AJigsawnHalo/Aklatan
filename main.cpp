@@ -1,3 +1,4 @@
+#include "user-window/userwindow/userwindow.h"
 #include "library-window/loginform/loginform.h"
 #include "common/settings/settingsmanager.h"
 #include "common/setup/setupmanager.h"
@@ -15,12 +16,20 @@ int main(int argc, char *argv[])
 	QString firstrun = setMan.loadSettings("FirstRun", "Settings", "true").toString(); 
 	qDebug() << firstrun;
 
-    // If the value returned is true, run the setup
+    // If the value returned is "true", run the setup
 	if (firstrun == "true"){
 		SetupManager setup;
 		setup.show();	
 		return a.exec();
 	}
+
+	// If the value returned is "User", open the User Window as default.
+	else if (firstrun == "User"){
+		UserWindow u;
+		u.show();
+		return a.exec();
+	}
+
     // Else, run the admin login
 	else {
 		setMan.setConf();
