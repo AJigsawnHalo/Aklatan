@@ -77,3 +77,4 @@ Aklatan
 .vscode
 compile_commands.json
 .clangd
+.cache
